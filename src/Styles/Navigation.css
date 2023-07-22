@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*{
+    text-decoration: none;
+}
+.sidebar{
+    background: rgb(12,41,57);
+    color: white;
+    height: 100vh;
+}
+
+.top_section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 15px;
+}
+
+.logo{
+    font-size: 25px;
+    line-height: 1;
+    
+}
+
+.bars{
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 1vh;
+}
+
+.Link{
+    display: flex;
+    color: white;
+    gap: 10px;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-right:4px solid white;
+    transition: 0.2s cubic-bezier(0.6, -0.28 , 0.735 , 0.045);
+     
+}
+
+.Link:hover{
+    border-right:4px solid white;
+    transition: 0.2s cubic-bezier(0.6, -0.28 , 0.735 , 0.045);
+    background: rgba(243, 243, 243, 0.1);
+}
+
+.main-container{
+    display: flex;
+    
+}
+
+main{
+    padding: 50px;
+}
+
+
+

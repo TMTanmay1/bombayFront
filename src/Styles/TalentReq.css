@@ -1,0 +1,54 @@
+.heading {
+    margin-top: 2vh;
+    /* font-size: 20px; */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .talent-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .talent-option {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    flex-basis: calc(33.33% - 20px);
+  }
+  
+  .talent-option label {
+    margin-left: 5px;
+  }
+  
+  .extra-talent {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .extra-talent input {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .plus-button {
+    font-size: 18px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .plus-button:hover {
+    background-color: #0056b3;
+  }
+  

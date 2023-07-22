@@ -1,0 +1,105 @@
+.deliverable {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+/* New CSS rule to display TalentReq below each deliverable */
+.talent-container {
+  width: 100%;
+}
+
+/* Adjust flex-basis to allow each TalentReq to take full width */
+.talent-option,
+.extra-talent {
+  flex-basis: 100%;
+}
+
+/* Add margin-top to separate TalentReq sections */
+.talent-option:not(:first-child),
+.extra-talent:not(:first-child) {
+  margin-top: 10px;
+}
+
+.form-container {
+    margin-top: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .form-field {
+    flex: 1;
+    margin-right: 5%;
+  }
+  
+  input[type='text'],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: large;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .head {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  textarea,
+    select {
+  height: 100%;
+}
+
+.plus-button {
+  font-size: 18px;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 1vh;
+}
+
+.plus-button:hover {
+  background-color: #0056b3;
+}
+
+select {
+    width: 60%;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  select option {
+    padding: 4px;
+  }
+  
+  select option:hover {
+    background-color: #f2f2f2;
+  }
+  
