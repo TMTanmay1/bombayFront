@@ -8,6 +8,25 @@
   background-size: cover;
 }
 
+.logoB{
+  position:absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left:-18rem;
+ 
+ 
+}
+.logoB img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 17%;
+  height: 10%;
+}
+
+
 
 
 .login-form {

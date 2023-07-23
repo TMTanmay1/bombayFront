@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import '../Styles/Login.css';
-import Logo from '../assets/logo.png'
+import LogoB from '../assets/logo.png'
 
 export default function Login({setLoginUser}) {
   const navigate = useNavigate()
@@ -30,6 +30,10 @@ export default function Login({setLoginUser}) {
 
   return (
     <div className="container">
+      <div   className="logoB">
+        <img   src={LogoB} alt=''></img>
+      </div>
+
       <div className="login-form">
         <h2 className="login-form-title">Sign In</h2>
         <form>

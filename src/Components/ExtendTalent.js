@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import '../Styles/ExtendTalent.css';
+import Hire from '../Components/Hire';
 
 function ExtendTalent() {
+  const [talentType, setTalentType] = useState('in-house');
   const [salary, setSalary] = useState('');
   const [workDays, setWorkDays] = useState('');
+
+  const handleTalentTypeChange = (event) => {
+    setTalentType(event.target.value);
+  };
 
   const handleSalaryChange = (event) => {
     const value = event.target.value;
@@ -31,7 +37,7 @@ function ExtendTalent() {
     <div className='extend-talent-container'>
       <div className='form-field'>
         <label htmlFor='talent-type'>Talent Type:</label>
-        <select id='talent-type'>
+        <select id='talent-type' value={talentType} onChange={handleTalentTypeChange}>
           <option value='in-house'>In-house</option>
           <option value='hire'>Hire</option>
         </select>
@@ -71,6 +77,8 @@ function ExtendTalent() {
         <label htmlFor='total'>Total:</label>
         <input id='total' type='text' value={calculateTotal()} readOnly />
       </div>
+
+      {talentType === 'hire' && <Hire />}
     </div>
   );
 }

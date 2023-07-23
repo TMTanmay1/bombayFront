@@ -3,14 +3,14 @@ import { useState , useEffect } from 'react';
 import '../Styles/Header.css'
 
 function Header() {
-    const currentDate = new Date().toLocaleDateString();
+    const currentDate = new Date().toLocaleDateString('en-GB');
 
     const [validThroughDate, setValidThroughDate] = useState('');
 
   useEffect(() => {
     const currentDateObj = new Date();
     const validThroughDateObj = new Date(currentDateObj.setDate(currentDateObj.getDate() + 45));
-    setValidThroughDate(validThroughDateObj.toLocaleDateString());
+    setValidThroughDate(validThroughDateObj.toLocaleDateString('en-GB'));
   }, []);
 
   return (
@@ -18,7 +18,7 @@ function Header() {
       <div className="field">
         <label htmlFor="date">Date:</label>
         <input id="date" type="text" value={currentDate} readOnly />
-        <label className='d_format'>(MM/DD/YYYY)</label>
+        
       </div>
       <div className="field">
         <label htmlFor="companyName">BombayCat Flims</label>

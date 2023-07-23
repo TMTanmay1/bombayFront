@@ -12,7 +12,10 @@ function Proposal() {
 
   return (
     <div>
+      <div className='h'>
       <h1 className='head'>Proposal Form</h1>
+      <input  className='PNumber' type='text' placeholder='Proposal Number'></input>
+      </div>
       <Header></Header>
       <div className='form-container'>
         <div className='form-row'>
@@ -28,7 +31,7 @@ function Proposal() {
         <div className='form-row'>
           <div className='form-field'>
             <label htmlFor='contactNo'>Contact No:</label>
-            <input id='contactNo' type='number' />
+            <input id='contactNo' type='text' />
           </div>
           <div className='form-field'>
             <label htmlFor='emailId'>Email ID:</label>
