@@ -14,7 +14,7 @@ function Proposal() {
     <div>
       <div className='h'>
       <h1 className='head'>Proposal Form</h1>
-      <input  className='PNumber' type='text' placeholder='Proposal Number'></input>
+      {/* <input  className='PNumber' type='text' placeholder='Proposal Number'></input> */}
       </div>
       <Header></Header>
       <div className='form-container'>
@@ -37,6 +37,10 @@ function Proposal() {
             <label htmlFor='emailId'>Email ID:</label>
             <input id='emailId' type='email' />
           </div>
+        </div>
+        <div className='form-field'>
+        <label htmlFor='Proposal_N'>Proposal Number:</label>
+        <input  id='PNumber' type='text' ></input>
         </div>
       </div>
       <div className='radio-group'>
@@ -69,7 +73,8 @@ function Proposal() {
               <label htmlFor='metaverseServices'>Metaverse Services</label>
             </div>
 
-            {selectedService && <Body />}
+            {selectedService === 'Content Creation' && <Body />}
+            
           </div>
            
   )

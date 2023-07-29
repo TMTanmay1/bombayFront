@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.d{
+  font-size: larger;
+}
+
 /* Adjust flex-basis to allow each TalentReq to take full width */
 .talent-option,
 .extra-talent {

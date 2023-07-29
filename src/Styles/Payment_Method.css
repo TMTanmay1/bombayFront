@@ -1,0 +1,248 @@
+.payment-method-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: 50%;
+    line-height: 15vh;
+    margin-left: 20%;
+  }
+  
+  .payment-method-label {
+    padding-right: 10px;
+  }
+  
+  .payment-method-input {
+    width: 50%;
+  }
+
+  .big-container {
+    display: flex;
+  }
+
+  .left-content {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .milestone-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .milestone-table th, .milestone-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    height: 40px;
+    text-align: left;
+  }
+  
+  .mile{
+    width: 10px;
+  }
+
+  .milestone-table th {
+    background-color: #f2f2f2;
+  }
+
+  .milestone-table th:nth-child(2),
+  .milestone-table td:nth-child(2) {
+  /* Decrease the width for the Payment Method column */
+  width: 100px;
+}
+  
+  .milestone-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .milestone-table tr:hover {
+    background-color: #ddd;
+  }
+
+  .milestone-table th:nth-child(1),
+.milestone-table td:nth-child(1) {
+  width: 150px; 
+}
+
+.milestone-table th:nth-child(2),
+.milestone-table td:nth-child(2) {
+  width: 80px; 
+}
+
+.milestone-table th:nth-child(3),
+.milestone-table td:nth-child(3) {
+  width: 100px; 
+}
+
+.milestone-table th:nth-child(4),
+.milestone-table td:nth-child(4) {
+  width: 100px; 
+}
+  
+  .right-content {
+    flex: 1;
+  }
+
+  .reference-url-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .reference-url-label {
+    padding-right: 10px;
+  }
+  
+  .reference-url-input {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .reference-url-plus {
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  font-weight: bold;
+  }
+
+  .client-logo-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .client-logo-label {
+    padding-right: 10px;
+  }
+  
+  .client-logo-input {
+    flex: 1;
+    padding: 5px;
+  }
+    
+
+  .talent-cost-container,
+.post-production-cost-container,
+.equipment-cost-container,
+.total-cost-container {
+    margin-left: 50%;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+
+.talent-cost-label,
+.post-production-cost-label,
+.equipment-cost-label,
+.total-cost-label {
+  padding-right: 10px;
+}
+
+.talent-cost-input,
+.post-production-cost-input,
+.equipment-cost-input,
+.total-cost-input {
+  flex: 1;
+  padding: 5px;
+}
+
+.company-profit-container {
+    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .company-profit-label {
+    padding-right: 10px;
+  }
+  
+  .company-profit-select {
+    padding: 5px;
+  }
+
+  .gst-toggle-container {
+    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .gst-label {
+    padding-right: 10px;
+  }
+  
+  .toggle-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .react-switch {
+    margin-left: 10px;
+  }
+
+  .project-cost-container {
+    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .project-cost-label {
+    padding-right: 10px;
+  }
+  
+  .project-cost-input,
+  .second-input {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .plus-symbol {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 18px;
+  }
+  
+  .total-project-cost-container {
+    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .total-project-cost-label {
+    padding-right: 10px;
+  }
+  
+  .total-project-cost-input {
+    flex: 1;
+    padding: 5px;
+  }
+
+  .proposal-authorized-container {
+    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .proposal-authorized-label {
+    padding-right: 10px;
+  }
+  
+  .proposal-authorized-select {
+    padding: 5px;
+  }
+  
+  .generate-pdf-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+  }
+  
+  
+  

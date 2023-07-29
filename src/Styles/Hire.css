@@ -33,4 +33,26 @@
       width: 100%;
     }
   }
+
+  .per_day_container,
+.flat_container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.per_day_container input,
+.flat_container input {
+  width: 100px;
+  padding: 8px;
+  height: fit-content;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#hireOption{
+  list-style: none;
+  line-height: 2vh;
+}
+  
   

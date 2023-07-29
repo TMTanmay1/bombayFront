@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../Styles/Body.css';
 import TalentReq from './TalentReq';
+import Postproduction from './PostProduction.js';
 
 function Body() {
   const [deliverables, setDeliverables] = useState([{ option: '', otherOption: '', id: 0 }]);
@@ -26,7 +27,7 @@ function Body() {
       {deliverables.map((deliverable, index) => (
         <div key={deliverable.id} className='deliverable'>
           <div className='form-field'>
-            <label htmlFor={`deliverable-${index}`}>Deliverable:</label>
+            <label className='d' htmlFor={`deliverable-${index}`}>Deliverable:</label>
             <select
               id={`deliverable-${index}`}
               name='option'
@@ -73,6 +74,8 @@ function Body() {
           +
         </button>
       </div>
+            
+            <Postproduction></Postproduction>
     </div>
   );
 }

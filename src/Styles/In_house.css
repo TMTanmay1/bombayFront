@@ -1,0 +1,24 @@
+.form-field {
+    flex-basis: 25%;
+  }
+
+  .in_house_container{
+    display: flex;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type='number'],
+  input[type='text'] {
+    width: 100%;
+    padding: 8px;
+    font-size: large;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[readonly] {
+    background-color: #f2f2f2;
+  }
