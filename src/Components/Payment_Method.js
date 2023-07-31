@@ -3,6 +3,48 @@ import Switch from 'react-switch';
 import '../Styles/Payment_Method.css';
 
 function Payment_Method() {
+  const [companyProfitOption, setCompanyProfitOption] = useState('');
+  const [talentCost, setTalentCost] = useState('');
+  const [postProductionCost, setPostProductionCost] = useState('');
+  const [equipmentCost, setEquipmentCost] = useState('');
+  const [duplicatedReferenceUrls, setDuplicatedReferenceUrls] = useState([]);
+  const [tableRows, setTableRows] = useState([
+    { milestone: '', paymentMethod: '', value1: '', value2: '' },
+  ]);
+  const handleAddRow = () => {
+    setTableRows([...tableRows, { milestone: '', paymentMethod: '', value1: '', value2: '' }]);
+  };
+
+  // Function to handle changing data in a row
+  const handleChangeRowData = (index, field, value) => {
+    const updatedRows = [...tableRows];
+    updatedRows[index][field] = value;
+    if (field === 'paymentMethod') {
+      const profitPercentage = parseFloat(companyProfitOption) / 100;
+      const selectedPercentage = parseFloat(value.replace('%', '')) / 100;
+      updatedRows[index].value = (parseFloat(calculateTotalProjectCost()) * selectedPercentage).toFixed(2);
+      updatedRows[index].gst = (parseFloat(calculateTotalProjectCost()) * selectedPercentage * 0.18).toFixed(2);
+    }
+    setTableRows(updatedRows);
+  };
+
+  const handleDuplicateReferenceUrl = () => {
+    setDuplicatedReferenceUrls([...duplicatedReferenceUrls, duplicatedReferenceUrls.length]);
+  };
+
+  // Function to remove a duplicated container
+  const handleRemoveReferenceUrl = (indexToRemove) => {
+    const updatedReferenceUrls = duplicatedReferenceUrls.filter((_, index) => index !== indexToRemove);
+    setDuplicatedReferenceUrls(updatedReferenceUrls);
+  };
+
+
+  const calculateTotalCost = () => {
+    // Convert input values to numbers and sum them up
+    const total = parseFloat(talentCost) + parseFloat(postProductionCost) + parseFloat(equipmentCost);
+    return isNaN(total) ? '' : total.toFixed(2);
+  };
+  
   const [gstChecked, setGstChecked] = useState(true);
   const [showSecondInput, setShowSecondInput] = useState(gstChecked);
 
@@ -28,6 +70,22 @@ function Payment_Method() {
   
   };
 
+  const calculateTotalProjectCost = () => {
+    const totalCost = calculateTotalCost();
+    if (gstChecked) {
+      // Calculate total cost including 18% GST and company profit
+      const profitPercentage = parseFloat(companyProfitOption) / 100;
+      const gstAmount = parseFloat(totalCost) * 0.18;
+      const totalProjectCost = parseFloat(totalCost) + gstAmount + parseFloat(totalCost) * profitPercentage;
+      return isNaN(totalProjectCost) ? '' : totalProjectCost.toFixed(2);
+    } else {
+      // Calculate total cost including company profit but excluding GST
+      const profitPercentage = parseFloat(companyProfitOption) / 100;
+      const totalProjectCost = parseFloat(totalCost) * (1 + profitPercentage);
+      return isNaN(totalProjectCost) ? '' : totalProjectCost.toFixed(2);
+    }
+  };
+
   return (
     <div>
       <div className="payment-method-container">
@@ -37,50 +95,84 @@ function Payment_Method() {
      <div className="big-container">
         {/* Left Content */}
         <div className="left-content">
+          <label>Payment Method:</label>
           <table className="milestone-table">
             <thead>
               <tr>
                 <th>Milestone</th>
                 <th>Payment Method</th>
-                <th>.</th>
-                <th>GST</th>
+                <th>value</th>
+                {/* <th>GST</th> */}
+                {gstChecked && <th>GST</th>}
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                <input className='mile' type="text" />
-                </td>
-                <td>
-                <select className="payment-method-select">
-                    {generateOption()}
-                  </select>
-                </td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>
-                <input className='mile' type="text" />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td> <input className='mile' type="text" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              {tableRows.map((rowData, index) => (
+                <tr key={`row_${index}`}>
+                  <td>
+                    <input
+                      className="mile"
+                      type="text"
+                      value={rowData.milestone}
+                      onChange={(e) => handleChangeRowData(index, 'milestone', e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <select
+                      className="payment-method-select"
+                      value={rowData.paymentMethod}
+                      onChange={(e) => handleChangeRowData(index, 'paymentMethod', e.target.value)}
+                    >
+                      {generateOption()}
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      className="mile"
+                      type="text"
+                      value={rowData.value}
+                      onChange={(e) => handleChangeRowData(index, 'value', e.target.value)}
+                    />
+                  </td>
+                  {gstChecked && (
+                    <td>
+                      <input
+                        className="mile"
+                        type="text"
+                        value={rowData.gst}
+                        onChange={(e) => handleChangeRowData(index, 'gst', e.target.value)}
+                      />
+                    </td>
+                  )}
+                  
+                    <button className="row-action-button" onClick={handleAddRow}>
+                      +
+                    </button>
+                  
+                </tr>
+              ))}
             </tbody>
           </table>
 
           <div className="reference-url-container">
             <label className="reference-url-label" htmlFor="ReferenceUrl">Reference Url:</label>
             <input id="ReferenceUrl" className="reference-url-input" type="url" />
-            <button className="reference-url-plus">+</button>
+            <button className="reference-url-plus" onClick={handleDuplicateReferenceUrl}>+</button>
           </div>
+
+          {duplicatedReferenceUrls.map((index) => (
+            <div key={`referenceUrl_${index}`} className="reference-url-container">
+              <label className="reference-url-label" htmlFor="ReferenceUrl">
+                Reference Url:
+              </label>
+              <input id="ReferenceUrl" className="reference-url-input" type="url" />
+              <button className="reference-url-delete" onClick={() => handleRemoveReferenceUrl(index)}>
+                Delete
+              </button>
+            </div>
+          ))}
+
+
 
           <div className="client-logo-container">
             <label className="client-logo-label" htmlFor="ClientLogo">Upload Client Logo:</label>
@@ -92,30 +184,35 @@ function Payment_Method() {
           {/* Talent Cost */}
           <div className="talent-cost-container">
             <label className="talent-cost-label" htmlFor="TalentCost">Talent Cost:</label>
-            <input id="TalentCost" className="talent-cost-input" type="text" />
+            <input id="TalentCost" className="talent-cost-input" type="text" value={talentCost}
+              onChange={(e) => setTalentCost(e.target.value)}/>
           </div>
 
           {/* Post Production Cost */}
           <div className="post-production-cost-container">
             <label className="post-production-cost-label" htmlFor="PostProductionCost">Post Production Cost:</label>
-            <input id="PostProductionCost" className="post-production-cost-input" type="text" />
+            <input id="PostProductionCost" className="post-production-cost-input" type="text" value={postProductionCost}
+             onChange={(e) => setPostProductionCost(e.target.value)}/>
           </div>
 
           {/* Equipment Cost */}
           <div className="equipment-cost-container">
             <label className="equipment-cost-label" htmlFor="EquipmentCost">Equipment Cost:</label>
-            <input id="EquipmentCost" className="equipment-cost-input" type="text" />
+            <input id="EquipmentCost" className="equipment-cost-input" type="text" value={equipmentCost}
+            onChange={(e) => setEquipmentCost(e.target.value)}/>
           </div>
 
           {/* Total Cost */}
           <div className="total-cost-container">
             <label className="total-cost-label" htmlFor="TotalCost">Total Cost:</label>
-            <input id="TotalCost" className="total-cost-input" type="text" />
+            <input id="TotalCost" className="total-cost-input" type="text" value={calculateTotalCost()}
+            readOnly/>
           </div>
 
           <div className="company-profit-container">
             <label className="company-profit-label" htmlFor="CompanyProfit">Company Profit:</label>
-            <select id="CompanyProfit" className="company-profit-select">
+            <select id="CompanyProfit" className="company-profit-select" value={companyProfitOption}
+              onChange={(e) => setCompanyProfitOption(e.target.value)}>
               {generateOptions()}
             </select>
           </div>
@@ -139,18 +236,22 @@ function Payment_Method() {
 
           <div className="project-cost-container">
             <label className="project-cost-label" htmlFor="ProjectCost">Project Cost:</label>
-            <input id="ProjectCost" className="project-cost-input" type="text" />
+            <input id="ProjectCost" className="project-cost-input" type="text" value={calculateTotalProjectCost()}
+          readOnly/>
             {gstChecked && (
               <>
                 <span className="plus-symbol">+</span>
-                <input id="SecondInput" className="second-input" type="text" />
+                <input id="SecondInput" className="second-input" type="text" value={calculateTotalCost() * 0.18}
+              readOnly />
+              <span>extra for gst 18%</span>
               </>
             )}
           </div>
 
           <div className="total-project-cost-container">
             <label className="total-project-cost-label" htmlFor="TotalProjectCost">Total Project Cost:</label>
-            <input id="TotalProjectCost" className="total-project-cost-input" type="text" />
+            <input id="TotalProjectCost" className="total-project-cost-input" type="text" value={calculateTotalProjectCost()}
+          readOnly/>
           </div>
 
           <div className="proposal-authorized-container">
@@ -161,7 +262,7 @@ function Payment_Method() {
               <option value="Kushan Shah">Kushan Shah</option>
               <option value="Kumar Rohit">Kumar Rohit</option>
             </select>
-            <button className="generate-pdf-button">Generate PDF</button>
+            <button className="generate-pdf-button" >Generate PDF</button>
           </div>
         </div>
       </div>

@@ -9,6 +9,10 @@
   label {
     font-weight: bold;
   }
+
+  .h{
+    left: 0;
+  }
   
   select,
   input[type='text'] {
@@ -55,4 +59,7 @@
   line-height: 2vh;
 }
   
+
+
+
   

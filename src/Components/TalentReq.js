@@ -1,3 +1,4 @@
+// TalentReq.js
 import React, { useState } from 'react';
 import '../Styles/TalentReq.css';
 import ExtendTalent from '../Components/ExtendTalent.js';
@@ -27,17 +28,27 @@ const talentOptions = [
 function TalentReq() {
   const [selectedTalents, setSelectedTalents] = useState([]);
   const [extraTalent, setExtraTalent] = useState('');
+  const [isExtraSelected, setIsExtraSelected] = useState(false);
 
   const handleTalentChange = (talent) => {
-    if (selectedTalents.includes(talent)) {
-      setSelectedTalents(selectedTalents.filter((item) => item !== talent));
+    if (talent === 'Extra') {
+      setIsExtraSelected(!isExtraSelected);
     } else {
-      setSelectedTalents([...selectedTalents, talent]);
+      if (selectedTalents.includes(talent)) {
+        setSelectedTalents(selectedTalents.filter((item) => item !== talent));
+      } else {
+        setSelectedTalents([...selectedTalents, talent]);
+      }
     }
   };
 
   const handleExtraTalentChange = (event) => {
     setExtraTalent(event.target.value);
+  };
+
+  const handlePlusButtonClick = () => {
+    setSelectedTalents([...selectedTalents, 'Extra']);
+    setIsExtraSelected(true);
   };
 
   return (
@@ -56,26 +67,27 @@ function TalentReq() {
             <label htmlFor={`talent-${index}`}>{talent}</label>
           </div>
         ))}
-        {selectedTalents.includes('Extra') && (
+        {isExtraSelected && (
           <div className='extra-talent'>
             <input
+              className='tal'
               type='text'
               value={extraTalent}
               onChange={handleExtraTalentChange}
               placeholder='Enter extra talent'
             />
-            <button className='plus-button'>+</button>
+            <button className='plus-button' onClick={handlePlusButtonClick}>+</button>
           </div>
         )}
       </div>
 
       {selectedTalents.map((talent, index) => (
         <div key={index}>
-          <label>{talent}</label> 
-          <ExtendTalent talentType={talent} />
+          <label>{talent}</label>
+          {talent === 'Extra' && <ExtendTalent talentType={extraTalent} />}
+          {talent !== 'Extra' && <ExtendTalent talentType={talent} />}
         </div>
       ))}
-
     </div>
   );
 }

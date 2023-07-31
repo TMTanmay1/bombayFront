@@ -30,7 +30,7 @@
   }
   
   .milestone-table th, .milestone-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #f2f2f2;
     padding: 8px;
     height: 40px;
     text-align: left;
@@ -51,11 +51,11 @@
 }
   
   .milestone-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
   }
   
   .milestone-table tr:hover {
-    background-color: #ddd;
+    background-color: #f2f2f2;
   }
 
   .milestone-table th:nth-child(1),
@@ -103,6 +103,27 @@
     cursor: pointer;
     border-radius: 50%;
     width: 30px;
+    height: 30px;
+  font-weight: bold;
+  }
+
+  .row-action-button{
+    margin-top: 2vh;
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+  }
+
+  .reference-url-delete{
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 10%;
+    width: fit-content;
     height: 30px;
   font-weight: bold;
   }

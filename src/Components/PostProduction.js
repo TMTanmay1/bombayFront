@@ -70,7 +70,7 @@ function Postproduction() {
   return (
     <div>
     <div className='postproduction-container'>
-      <div>
+      <div className='right'>
         <label className='heading'>Postproduction:</label>
         <div className='postproduction-options'>
           {postproductionOptions.map((option, index) => (
@@ -102,12 +102,14 @@ function Postproduction() {
 
       <div className='left'>
         <div className='toggle-container'>
+          <div className='s'>
           <label className='toggle-label'>Any Equipment Rent:</label>
           <ReactSwitch
             className='switch'
             checked={showEquipmentRent}
             onChange={handleToggleChange}
           />
+          </div>
           {showEquipmentRent && (
             <div className='equipment-rent'>
               <input
@@ -133,6 +135,7 @@ function Postproduction() {
         </div>
       </div>
 
+    </div>
       <div className='map'>
         {selectedOptions.map((option, index) => (
           <div key={index}>
@@ -141,7 +144,6 @@ function Postproduction() {
           </div>
         ))}
       </div>
-    </div>
     <Payment_Method></Payment_Method>
     </div>
   );

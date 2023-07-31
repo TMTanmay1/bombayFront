@@ -5,6 +5,7 @@
   justify-content: space-between;
 }
 
+
 .heading {
   font-weight: bold;
   font-size: larger;
@@ -71,6 +72,10 @@ input[type='text'] {
 
 .switch {
   margin-left: 10px;
+}
+
+.s{
+  display: flex;
 }
 
 .equipment-rent {

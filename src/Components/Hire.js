@@ -30,6 +30,7 @@ function Hire() {
 
   return (
     <div className='hire_container'>
+      <div className='h'>
       <label htmlFor='hireOption'>Hire:</label>
       <select
         id='hireOption'
@@ -40,7 +41,7 @@ function Hire() {
         <option value='perDay'>Per Day</option>
         <option value='flat'>Flat</option>
       </select>
-
+      </div>
       {perDayInputVisible && (
         <div className='per_day_container'>
           <label htmlFor='perDaySalary'>Per Day Salary:</label>

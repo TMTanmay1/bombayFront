@@ -14,10 +14,13 @@ function Proposal() {
     <div>
       <div className='h'>
       <h1 className='head'>Proposal Form</h1>
-      {/* <input  className='PNumber' type='text' placeholder='Proposal Number'></input> */}
       </div>
       <Header></Header>
       <div className='form-container'>
+      <div className='form-field'>
+        <label id='PNumber' htmlFor='Proposal_N'>Proposal Number:</label>
+        <input  id='PNumber' type='text' ></input>
+        </div>
         <div className='form-row'>
           <div className='form-field'>
             <label htmlFor='brandName'>Brand Name:</label>
@@ -38,10 +41,7 @@ function Proposal() {
             <input id='emailId' type='email' />
           </div>
         </div>
-        <div className='form-field'>
-        <label htmlFor='Proposal_N'>Proposal Number:</label>
-        <input  id='PNumber' type='text' ></input>
-        </div>
+        
       </div>
       <div className='radio-group'>
               <input className='rad_cir'
