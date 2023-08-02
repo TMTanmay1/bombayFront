@@ -5,6 +5,10 @@
     gap: 10px;
     margin-bottom: 10px;
   }
+
+  .hi{
+    display: flex;
+  }
   
   label {
     font-weight: bold;

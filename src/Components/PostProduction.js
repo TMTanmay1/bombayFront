@@ -112,6 +112,7 @@ function Postproduction() {
           </div>
           {showEquipmentRent && (
             <div className='equipment-rent'>
+              <div className='r'>
               <input
                 type='checkbox'
                 id='equipmentCheckbox'
@@ -119,6 +120,7 @@ function Postproduction() {
                 onChange={() => setShowOtherEquipmentInput(!showOtherEquipmentInput)}
               />
               <label htmlFor='equipmentCheckbox'>Equipment Name</label>
+              </div>
               {showOtherEquipmentInput && (
                 <div className='equipment-input'>
                   <input

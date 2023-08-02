@@ -30,6 +30,7 @@ function Hire() {
 
   return (
     <div className='hire_container'>
+      <div className='hi'>
       <div className='h'>
       <label htmlFor='hireOption'>Hire:</label>
       <select
@@ -89,6 +90,7 @@ function Hire() {
           />
         </div>
       )}
+      </div>
     </div>
   );
 }

@@ -6,6 +6,18 @@
   margin-bottom: 10px;
 }
 
+
+
+.tt{
+  margin-left: 80%;
+  display: flex;
+}
+
+.tt label{
+  margin-top: 5px;
+  font-size: large;
+}
+
 /* New CSS rule to display TalentReq below each deliverable */
 .talent-container {
   width: 100%;

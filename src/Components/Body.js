@@ -74,7 +74,16 @@ function Body() {
           +
         </button>
       </div>
-            
+            <div className='form-field'>
+              <div className='tt'>
+                <label htmlFor='total_talent'>Total Talent Cost:</label>
+                <input
+                id='total_talent' 
+                type='text'
+                name='total_talent'
+                readOnly/>
+                </div>
+            </div>
             <Postproduction></Postproduction>
     </div>
   );

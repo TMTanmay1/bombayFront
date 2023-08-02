@@ -86,6 +86,14 @@ function Payment_Method() {
     }
   };
 
+  const calculateCompanyProfitValue = () => {
+    const profitPercentage = parseFloat(companyProfitOption) / 100;
+    const totalCost = calculateTotalCost();
+    
+    return (parseFloat(totalCost) * profitPercentage).toFixed(2);
+  };
+  const companyProfitValue = calculateCompanyProfitValue();
+
   return (
     <div>
       <div className="payment-method-container">
@@ -236,14 +244,14 @@ function Payment_Method() {
 
           <div className="project-cost-container">
             <label className="project-cost-label" htmlFor="ProjectCost">Project Cost:</label>
-            <input id="ProjectCost" className="project-cost-input" type="text" value={calculateTotalProjectCost()}
+            <input id="ProjectCost" className="project-cost-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost())).toFixed(2)}
           readOnly/>
             {gstChecked && (
               <>
                 <span className="plus-symbol">+</span>
                 <input id="SecondInput" className="second-input" type="text" value={calculateTotalCost() * 0.18}
               readOnly />
-              <span>extra for gst 18%</span>
+              <span>for gst 18%</span>
               </>
             )}
           </div>
