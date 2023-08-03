@@ -1,33 +1,42 @@
-import React ,{useState} from 'react'
-import '../Styles/In_house.css'
+import React, { useState , useEffect   } from 'react';
+import '../Styles/In_house.css';
+
 
 function In_house() {
-    
-    const [salary, setSalary] = useState('');
-    const [workDays, setWorkDays] = useState('');
+  const [salary, setSalary] = useState('');
+  const [workDays, setWorkDays] = useState('');
   
-    const handleSalaryChange = (event) => {
-      const value = event.target.value;
-      setSalary(value);
-      if (value !== '') {
-        setSalary(Math.round(value / 30));
-      } else {
-        setSalary('');
-      }
-    };
-  
-    const handleWorkDaysChange = (event) => {
-      const value = event.target.value;
-      setWorkDays(value);
-    };
-  
-    const calculateTotal = () => {
-      if (salary !== '' && workDays !== '') {
-        return salary * workDays;
-      }
-      return '';
-    };
 
+
+  const handleSalaryChange = (event) => {
+    const value = event.target.value;
+    setSalary(value);
+    if (value !== '') {
+      setSalary(Math.round(value / 30));
+    } else {
+      setSalary('');
+    }
+  };
+
+  const handleWorkDaysChange = (event) => {
+    const value = event.target.value;
+    setWorkDays(value);
+  };
+
+  let c=0;
+  const calculateTotal = () => {
+    
+    if (salary !== '' && workDays !== '') {
+      const total = salary * workDays;
+      c = c+total;
+
+      console.log(c);
+      return total;
+    }
+
+    return '';
+  };
+console.log("hi");
   return (
     <div className='in_house_container'>
       <div className='form-field'>
@@ -66,7 +75,8 @@ function In_house() {
         <input id='total' type='text' value={calculateTotal()} readOnly />
       </div>
     </div>
-  )
+  );
 }
 
-export default In_house
+
+export default In_house;

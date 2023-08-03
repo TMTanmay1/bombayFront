@@ -3,7 +3,9 @@ import '../Styles/Body.css';
 import TalentReq from './TalentReq';
 import Postproduction from './PostProduction.js';
 
+
 function Body() {
+  
   const [deliverables, setDeliverables] = useState([{ option: '', otherOption: '', id: 0 }]);
   const [time, setTime] = useState('');
   const [otherOption, setOtherOption] = useState('');
@@ -81,6 +83,7 @@ function Body() {
                 id='total_talent' 
                 type='text'
                 name='total_talent'
+                
                 readOnly/>
                 </div>
             </div>

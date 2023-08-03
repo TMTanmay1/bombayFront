@@ -23,7 +23,7 @@ function ExtendTalent() {
       
       {talentType === 'in-house' && <In_house />}
       {talentType === 'hire' && <Hire />}
-
+      
     </div>
   );
 }

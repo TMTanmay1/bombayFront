@@ -83,9 +83,11 @@ function TalentReq() {
 
       {selectedTalents.map((talent, index) => (
         <div key={index}>
+          <div className='o'>
           <label>{talent}</label>
           {talent === 'Extra' && <ExtendTalent talentType={extraTalent} />}
           {talent !== 'Extra' && <ExtendTalent talentType={talent} />}
+          </div>
         </div>
       ))}
     </div>

@@ -75,7 +75,7 @@ function Payment_Method() {
     if (gstChecked) {
       // Calculate total cost including 18% GST and company profit
       const profitPercentage = parseFloat(companyProfitOption) / 100;
-      const gstAmount = parseFloat(totalCost) * 0.18;
+      const gstAmount = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost())).toFixed(2) * 0.18;
       const totalProjectCost = parseFloat(totalCost) + gstAmount + parseFloat(totalCost) * profitPercentage;
       return isNaN(totalProjectCost) ? '' : totalProjectCost.toFixed(2);
     } else {
@@ -249,7 +249,7 @@ function Payment_Method() {
             {gstChecked && (
               <>
                 <span className="plus-symbol">+</span>
-                <input id="SecondInput" className="second-input" type="text" value={calculateTotalCost() * 0.18}
+                <input id="SecondInput" className="second-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost())).toFixed(2) * 0.18}
               readOnly />
               <span>for gst 18%</span>
               </>
