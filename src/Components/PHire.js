@@ -1,10 +1,10 @@
 import React, { useState ,useEffect } from 'react';
-import '../Styles/Hire.css'
+import '../Styles/PHire.css'
 import { useDispatch } from 'react-redux';
-import { add2 } from "../store/slice/userSlice2";
+import { add4 } from "../store/slice/PuserSlice2";
 
 
-function Hire() {
+function PHire() {
   const [selectedOption, setSelectedOption] = useState('');
   const [perDayInputVisible, setPerDayInputVisible] = useState(false);
   const [flatInputVisible, setFlatInputVisible] = useState(false);
@@ -37,11 +37,11 @@ function Hire() {
   const calculateTotal = (perDaySalary, perDayWorkDays, flatSalary) => {
     if (perDaySalary !== "" && perDayWorkDays !== "") {
       const total = perDaySalary * perDayWorkDays;
-      dispatch(add2(total));
+      dispatch(add4(total));
       return total;
     } else if (flatSalary !== "") {
       const total = parseInt(flatSalary);
-      dispatch(add2(total));
+      dispatch(add4(total));
       return total;
     } else {
       return "";
@@ -51,6 +51,7 @@ function Hire() {
   const handleCalculateClick = () => {
     calculateTotal(perDaySalary,perDayWorkDays,flatSalary);
   };
+
   // useEffect(() => {
   //   // Clear the existing timeout when salary or workDays change
   //   if (timerId) {
@@ -126,7 +127,7 @@ function Hire() {
           </div>
           <div className="form-field">
         <button className="button" onClick={handleCalculateClick}>Calculate</button>
-        </div>
+         </div>
         </div>
       )}
       </div>
@@ -161,4 +162,4 @@ function Hire() {
   );
 }
 
-export default Hire;
+export default PHire;

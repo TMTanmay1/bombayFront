@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import '../Styles/PostProduction.css';
 import ReactSwitch from 'react-switch';
-import ExtendTalent from './ExtendTalent.js';
+import ExtendPost from './ExtendPost.js';
+import ExtendEquip from './ExtendEquip';
 import Payment_Method from './Payment_Method.js';
+import { useSelector } from "react-redux";
 
 const postproductionOptions = [
   'Editing',
@@ -18,10 +20,14 @@ const postproductionOptions = [
 
 function Postproduction() {
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selop , setSelop] = useState([])
   const [showOtherInput, setShowOtherInput] = useState(false);
   const [otherInputValue, setOtherInputValue] = useState('');
   const [showEquipmentRent, setShowEquipmentRent] = useState(false);
   const [showOtherEquipmentInput, setShowOtherEquipmentInput] = useState(false);
+
+  const data3 = useSelector((state) => state.user3);
+  const data4 = useSelector((state) => state.user4);
 
   const [showContent, setShowContent] = useState(false);
 
@@ -61,7 +67,7 @@ function Postproduction() {
 
   const handleAddOtherEquipment = () => {
     if (otherInputValue.trim() !== '') {
-      setSelectedOptions((prevSelectedOptions) => [...prevSelectedOptions, otherInputValue]);
+      setSelop((prevSelectedOptions) => [...prevSelectedOptions, otherInputValue]);
       setOtherInputValue('');
       setShowOtherInput(false);
     }
@@ -108,7 +114,12 @@ function Postproduction() {
             className='switch'
             checked={showEquipmentRent}
             onChange={handleToggleChange}
-          />
+            onColor="#86d3ff"
+                onHandleColor="#2693e6"
+                handleDiameter={20}
+                uncheckedIcon={false}
+                checkedIcon={false}
+          />  
           </div>
           {showEquipmentRent && (
             <div className='equipment-rent'>
@@ -141,11 +152,29 @@ function Postproduction() {
       <div className='map'>
         {selectedOptions.map((option, index) => (
           <div key={index}>
-            <label>{option}</label>
-            <ExtendTalent talentType={option} />
+            <label id="index">{option}</label>
+            <ExtendPost talentType={option} />
+          </div>
+        ))}
+
+        {selop.map((option,index) => (
+          <div  key={index}>
+            <label id='index'>{option}</label>
+            <ExtendEquip talentType={option} />
           </div>
         ))}
       </div>
+      <div className='form-field'>
+              <div className='tt'>
+                <label htmlFor='postproduction_talent'>Total PostProduction:</label>
+                <input
+                id='total_postproduction' 
+                type='text'
+                name='total_postproduction'
+                value={data3+data4}
+                readOnly/>
+                </div>
+            </div>
     <Payment_Method></Payment_Method>
     </div>
   );

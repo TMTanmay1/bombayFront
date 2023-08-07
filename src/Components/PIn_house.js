@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../Styles/In_house.css";
+import "../Styles/PIn_house.css";
 import { useDispatch } from "react-redux";
 
-import { add } from "../store/slice/userSlice";
+import { add3 } from "../store/slice/PuserSlice";
 
-function In_house() {
+function PIn_house() {
   const [salary, setSalary] = useState("");
   const [workDays, setWorkDays] = useState("");
   const [answer, setAnswer] = useState("");
@@ -31,7 +31,7 @@ function In_house() {
     if (salary !== "" && workDays !== "") {
       const total = salary * workDays;
 
-      // dispatch(add(total));
+      // dispatch(add3(total));
 
       // setAnswer(total);
 
@@ -45,7 +45,7 @@ function In_house() {
     const total = calculateTotal(salary,workDays);
     if (total !== "") {
       // Dispatch the total value
-      dispatch(add(total));
+      dispatch(add3(total));
     }
   };
 
@@ -116,9 +116,8 @@ function In_house() {
       <div className="form-field">
         <button className="button" onClick={handleCalculateClick}>Calculate</button>
       </div>
-      
     </div>
   );
 }
 
-export default In_house;
+export default PIn_house;

@@ -1,5 +1,5 @@
 .postproduction-container {
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -98,4 +98,21 @@ input[type='text'] {
 .r{
   display:flex;
   margin-bottom: 2vh;
+}
+
+.tt{
+  margin-top: 5vh;
+}
+
+.right{
+  flex: 1;
+}
+
+.left{
+  flex: 1;
+  margin-left: 60%;
+}
+
+#index{
+  font-size: large;
 }

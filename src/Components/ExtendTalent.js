@@ -14,16 +14,20 @@ function ExtendTalent() {
   return (
     <div className='extend-talent-container'>
       <div className='form-field'>
-        <label htmlFor='talent-type'>Talent Type:</label>
+        <div className='f'>
+        {/* <label htmlFor='talent-type'>Talent Type:</label> */}
         <select id='talent-type' value={talentType} onChange={handleTalentTypeChange}>
           <option value='in-house'>In-house</option>
           <option value='hire'>Hire</option>
         </select>
+        </div>
       </div>
-      
-      {talentType === 'in-house' && <In_house />}
+      <div className='form-field'>
+        <div className='p'>
       {talentType === 'hire' && <Hire />}
-      
+      {talentType === 'in-house' && <In_house />}
+      </div>
+      </div>
     </div>
   );
 }

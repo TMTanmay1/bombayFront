@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import '../Styles/Body.css';
 import TalentReq from './TalentReq';
 import Postproduction from './PostProduction.js';
+import { useSelector } from "react-redux";
 
 
 function Body() {
+  const data1 = useSelector((state) => state.users);
+  const data2 = useSelector((state) => state.users2);
+
   
   const [deliverables, setDeliverables] = useState([{ option: '', otherOption: '', id: 0 }]);
   const [time, setTime] = useState('');
@@ -20,6 +24,7 @@ function Body() {
   const handleAddDeliverable = () => {
     setDeliverables([...deliverables, { option: '', otherOption: '', id: Date.now() }]);
   };
+
 
   return (
     <div>
@@ -83,8 +88,9 @@ function Body() {
                 id='total_talent' 
                 type='text'
                 name='total_talent'
-                
-                readOnly/>
+                value={data1 + data2}
+                readOnly
+                />
                 </div>
             </div>
             <Postproduction></Postproduction>

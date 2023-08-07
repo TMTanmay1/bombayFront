@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../Styles/In_house.css";
+import "../Styles/EIn_house.css";
 import { useDispatch } from "react-redux";
 
-import { add } from "../store/slice/userSlice";
+import { add5 } from "../store/slice/EuserSlice";
 
-function In_house() {
+function EIn_house() {
   const [salary, setSalary] = useState("");
   const [workDays, setWorkDays] = useState("");
   const [answer, setAnswer] = useState("");
@@ -31,7 +31,7 @@ function In_house() {
     if (salary !== "" && workDays !== "") {
       const total = salary * workDays;
 
-      // dispatch(add(total));
+      // dispatch(add5(total));
 
       // setAnswer(total);
 
@@ -45,7 +45,7 @@ function In_house() {
     const total = calculateTotal(salary,workDays);
     if (total !== "") {
       // Dispatch the total value
-      dispatch(add(total));
+      dispatch(add5(total));
     }
   };
 
@@ -112,13 +112,11 @@ function In_house() {
         <label htmlFor="total">Total:</label>
         <input id="total" type="text" value={calculateTotal(salary,workDays)} readOnly />
       </div>
-
       <div className="form-field">
         <button className="button" onClick={handleCalculateClick}>Calculate</button>
       </div>
-      
     </div>
   );
 }
 
-export default In_house;
+export default EIn_house;

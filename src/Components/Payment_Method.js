@@ -1,13 +1,23 @@
 import React , {useState} from 'react';
 import Switch from 'react-switch';
 import '../Styles/Payment_Method.css';
+import { useSelector } from "react-redux";
 
 function Payment_Method() {
+
+  const data1 = useSelector((state) => state.users);
+  const data2 = useSelector((state) => state.users2);
+  const data3 = useSelector((state) => state.user3);
+  const data4 = useSelector((state) => state.user4);
+  const data5 = useSelector((state) => state.user5);
+  const data6 = useSelector((state) => state.user6);
+
   const [companyProfitOption, setCompanyProfitOption] = useState('');
   const [talentCost, setTalentCost] = useState('');
   const [postProductionCost, setPostProductionCost] = useState('');
   const [equipmentCost, setEquipmentCost] = useState('');
   const [duplicatedReferenceUrls, setDuplicatedReferenceUrls] = useState([]);
+  
   const [tableRows, setTableRows] = useState([
     { milestone: '', paymentMethod: '', value1: '', value2: '' },
   ]);
@@ -39,7 +49,7 @@ function Payment_Method() {
   };
 
 
-  const calculateTotalCost = () => {
+  const calculateTotalCost = (talentCost, postProductionCost, equipmentCost) => {
     // Convert input values to numbers and sum them up
     const total = parseFloat(talentCost) + parseFloat(postProductionCost) + parseFloat(equipmentCost);
     return isNaN(total) ? '' : total.toFixed(2);
@@ -52,6 +62,8 @@ function Payment_Method() {
     setGstChecked(checked);
     setShowSecondInput(checked);
   };
+
+  
   const generateOptions = () => {
     const options = [<option key="select" value="">Select an option</option>];
     for (let percentage = 30; percentage <= 150; percentage += 10) {
@@ -71,11 +83,11 @@ function Payment_Method() {
   };
 
   const calculateTotalProjectCost = () => {
-    const totalCost = calculateTotalCost();
+    const totalCost = calculateTotalCost(data1 + data2, data3 + data4, data5+data6);
     if (gstChecked) {
       // Calculate total cost including 18% GST and company profit
       const profitPercentage = parseFloat(companyProfitOption) / 100;
-      const gstAmount = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost())).toFixed(2) * 0.18;
+      const gstAmount = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18;
       const totalProjectCost = parseFloat(totalCost) + gstAmount + parseFloat(totalCost) * profitPercentage;
       return isNaN(totalProjectCost) ? '' : totalProjectCost.toFixed(2);
     } else {
@@ -88,7 +100,7 @@ function Payment_Method() {
 
   const calculateCompanyProfitValue = () => {
     const profitPercentage = parseFloat(companyProfitOption) / 100;
-    const totalCost = calculateTotalCost();
+    const totalCost = calculateTotalCost(data1 + data2, data3 + data4, data5+data6);
     
     return (parseFloat(totalCost) * profitPercentage).toFixed(2);
   };
@@ -192,28 +204,33 @@ function Payment_Method() {
           {/* Talent Cost */}
           <div className="talent-cost-container">
             <label className="talent-cost-label" htmlFor="TalentCost">Talent Cost:</label>
-            <input id="TalentCost" className="talent-cost-input" type="text" value={talentCost}
-              onChange={(e) => setTalentCost(e.target.value)}/>
+            <input id="TalentCost" className="talent-cost-input" type="text" value={data1+data2}
+              onChange={(e) => setTalentCost(e.target.value)}
+              readOnly
+              />
           </div>
 
           {/* Post Production Cost */}
           <div className="post-production-cost-container">
             <label className="post-production-cost-label" htmlFor="PostProductionCost">Post Production Cost:</label>
-            <input id="PostProductionCost" className="post-production-cost-input" type="text" value={postProductionCost}
-             onChange={(e) => setPostProductionCost(e.target.value)}/>
+            <input id="PostProductionCost" className="post-production-cost-input" type="text" value={data3+data4}
+             onChange={(e) => setPostProductionCost(e.target.value)}
+             readOnly
+             />
           </div>
 
           {/* Equipment Cost */}
           <div className="equipment-cost-container">
             <label className="equipment-cost-label" htmlFor="EquipmentCost">Equipment Cost:</label>
-            <input id="EquipmentCost" className="equipment-cost-input" type="text" value={equipmentCost}
-            onChange={(e) => setEquipmentCost(e.target.value)}/>
+            <input id="EquipmentCost" className="equipment-cost-input" type="text" value={data5+data6}
+            onChange={(e) => setEquipmentCost(e.target.value)}
+            readOnly/>
           </div>
 
           {/* Total Cost */}
           <div className="total-cost-container">
             <label className="total-cost-label" htmlFor="TotalCost">Total Cost:</label>
-            <input id="TotalCost" className="total-cost-input" type="text" value={calculateTotalCost()}
+            <input id="TotalCost" className="total-cost-input" type="text" value={calculateTotalCost(data1 + data2, data3 + data4, data5+data6)}
             readOnly/>
           </div>
 
@@ -244,12 +261,12 @@ function Payment_Method() {
 
           <div className="project-cost-container">
             <label className="project-cost-label" htmlFor="ProjectCost">Project Cost:</label>
-            <input id="ProjectCost" className="project-cost-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost())).toFixed(2)}
+            <input id="ProjectCost" className="project-cost-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2)}
           readOnly/>
             {gstChecked && (
               <>
                 <span className="plus-symbol">+</span>
-                <input id="SecondInput" className="second-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost())).toFixed(2) * 0.18}
+                <input id="SecondInput" className="second-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18}
               readOnly />
               <span>for gst 18%</span>
               </>
@@ -270,7 +287,7 @@ function Payment_Method() {
               <option value="Kushan Shah">Kushan Shah</option>
               <option value="Kumar Rohit">Kumar Rohit</option>
             </select>
-            <button className="generate-pdf-button" >Generate PDF</button>
+            <button className="generate-pdf-button" >Submit</button>
           </div>
         </div>
       </div>

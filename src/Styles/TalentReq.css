@@ -56,3 +56,7 @@
   .plus-button:hover {
     background-color: #0056b3;
   } 
+
+  #index{
+    font-size: large;
+  }
