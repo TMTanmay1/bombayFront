@@ -84,6 +84,7 @@ function In_house() {
           type="number"
           onChange={handleSalaryChange}
           placeholder="Enter Salary"
+          min={0}
         />
       </div>
 
@@ -106,6 +107,7 @@ function In_house() {
           type="number"
           onChange={handleWorkDaysChange}
           placeholder="Enter Work Days"
+          min={0}
         />
       </div>
       <div className="form-field">

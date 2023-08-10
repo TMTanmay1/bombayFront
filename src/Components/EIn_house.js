@@ -83,6 +83,7 @@ function EIn_house() {
           id="salary"
           type="number"
           onChange={handleSalaryChange}
+          min={0}
           placeholder="Enter Salary"
         />
       </div>
@@ -105,6 +106,7 @@ function EIn_house() {
           id="work-days"
           type="number"
           onChange={handleWorkDaysChange}
+          min={0}
           placeholder="Enter Work Days"
         />
       </div>

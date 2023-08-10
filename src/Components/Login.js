@@ -40,8 +40,6 @@ console.log(user);
     })
   }
 
-      
-
   return (
     <div className="container">
       <div className="logoB">

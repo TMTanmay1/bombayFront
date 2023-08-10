@@ -103,6 +103,7 @@ function PHire() {
             type='number'
             value={perDaySalary}
             placeholder='Per Day'
+            min={0}
             onChange={(e) => setPerDaySalary(e.target.value)}
           />
           </div>
@@ -113,6 +114,7 @@ function PHire() {
             type='number'
             value={perDayWorkDays}
             placeholder='Work Days'
+            min={0}
             onChange={(e) => setPerDayWorkDays(e.target.value)}
           />
           </div>
@@ -140,6 +142,7 @@ function PHire() {
             id='flatSalary'
             type='number'
             value={flatSalary}
+            min={0}
             onChange={(e) => setFlatSalary(e.target.value)}
           />
           </div>

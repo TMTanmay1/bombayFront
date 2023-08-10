@@ -5,6 +5,7 @@ import PuserSlice from "../store/slice/PuserSlice";
 import PuserSlice2 from "../store/slice/PuserSlice2";
 import EuserSlice from "../store/slice/EuserSlice";
 import EuserSlice2 from "../store/slice/EuserSlice2";
+import formSlice from "../store/slice/formSlice";
 
 const store = configureStore({
     reducer:{
@@ -13,7 +14,8 @@ const store = configureStore({
         user3:PuserSlice,
         user4:PuserSlice2,
         user5:EuserSlice,
-        user6:EuserSlice2
+        user6:EuserSlice2,
+        form: formSlice
     }
 })
 

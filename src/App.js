@@ -4,6 +4,7 @@ import Login from './Components/Login';
 import Navigation from './Components/Navigation';
 import Proposal from './Pages/Proposal';
 import History from './Pages/History';
+import Gp from './Components/Gp';
 import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
 
 
@@ -20,6 +21,7 @@ function App() {
             <Routes>
             <Route path='/proposal' element={<Proposal/>}></Route>
             <Route path='/proposal/history' element={<History></History>}></Route>
+            <Route path ='/proposal/pdf' element={<Gp></Gp>}></Route>
             </Routes>
           </Navigation>
         </Router>

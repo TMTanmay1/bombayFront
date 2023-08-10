@@ -1,0 +1,60 @@
+   .big {
+    margin-top: 5%;    
+    align-items: center;
+  }
+
+  .top , .middle{
+    margin-top: 2%;
+    margin-left: 22%;
+  }
+
+  .a{
+    margin-top: 2%;
+  }
+
+  .c{
+    margin-top: 2%;
+  }
+  
+  .e{
+    margin-top: 2%;
+  }
+
+  .t{
+    margin-right: 25%;
+  }
+  .b{
+    margin-left: 22%;
+    margin-top: 2%;
+  }
+  /* .pdf-container {
+    width: 595px;
+  height: 842px; 
+  } */
+
+  .logo_container{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .logoA img,
+.logoC img{
+  max-width: 150px; /* Adjust the image size as needed */
+  max-height: 100px; /* Adjust the image size as needed */
+}
+  
+.A{
+  margin-top: 5%;
+  page-break-before: always;
+
+}
+
+.f {
+  
+  margin-top: auto; 
+}
+
+.B{
+  page-break-before: always;
+}
+  

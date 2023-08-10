@@ -103,6 +103,7 @@ function Hire() {
             value={perDaySalary}
             placeholder='Per Day'
             onChange={(e) => setPerDaySalary(e.target.value)}
+            min={0}
           />
           </div>
           <div className='form-field'>
@@ -113,6 +114,7 @@ function Hire() {
             value={perDayWorkDays}
             placeholder='Work Days'
             onChange={(e) => setPerDayWorkDays(e.target.value)}
+            min={0}
           />
           </div>
           <div className='form-field'>
@@ -148,6 +150,7 @@ function Hire() {
             id='flatTotal'
             type='number'
             value={flatSalary}
+            min={0}
             readOnly
           />
           </div>

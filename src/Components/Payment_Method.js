@@ -1,16 +1,55 @@
 import React , {useState} from 'react';
 import Switch from 'react-switch';
 import '../Styles/Payment_Method.css';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { updatePd } from '../store/slice/formSlice';
 
 function Payment_Method() {
+  const dispatch = useDispatch();
+  const [pd , Spd] = useState()
 
+  const handleDuration = (event) => {
+    const value = event.target.value;
+    dispatch(updatePd(value))
+    console.log(value);
+    Spd(value);  
+  }
+
+  const proposalNumber = useSelector((state) => state.form.proposalNumber);
+  const  brandName = useSelector((state) => state.form.brandName);
+  const  clientName = useSelector((state) => state.form.clientName);
+  const projectDuration = useSelector((state) => state.form.projectDuration);
+
+  console.log(brandName);
+  console.log(clientName);
+  console.log(proposalNumber);
+  console.log(projectDuration);
+
+  const navigate = useNavigate();
+  
   const data1 = useSelector((state) => state.users);
   const data2 = useSelector((state) => state.users2);
   const data3 = useSelector((state) => state.user3);
   const data4 = useSelector((state) => state.user4);
   const data5 = useSelector((state) => state.user5);
   const data6 = useSelector((state) => state.user6);
+
+  const [propsalN , setProposalN] = useState(proposalNumber)
+  const [brandN , setBrandN] = useState(brandName)
+  const [clientN , setClientN] = useState(clientName)
+  const [projectD , setProjectD] = useState(projectDuration)
+  const passData = () => {
+    navigate('/proposal/pdf', {
+      state: {
+        propsalN,
+        brandN,
+        clientN,
+        projectD
+      }
+    });
+  }
+
 
   const [companyProfitOption, setCompanyProfitOption] = useState('');
   const [talentCost, setTalentCost] = useState('');
@@ -110,7 +149,7 @@ function Payment_Method() {
     <div>
       <div className="payment-method-container">
       <label className="payment-method-label" htmlFor="ProjectDuration">Project Duration</label>
-      <input id="ProjectDuration" className="payment-method-input" type="text" />
+      <input id="ProjectDuration" className="payment-method-input" type="text" onBlur={handleDuration} />
      </div>
      <div className="big-container">
         {/* Left Content */}
@@ -287,7 +326,7 @@ function Payment_Method() {
               <option value="Kushan Shah">Kushan Shah</option>
               <option value="Kumar Rohit">Kumar Rohit</option>
             </select>
-            <button className="generate-pdf-button" >Submit</button>
+            <button className="generate-pdf-button" onClick={passData}>Generate PDF</button>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 
 function Body() {
+  
   const data1 = useSelector((state) => state.users);
   const data2 = useSelector((state) => state.users2);
 
@@ -29,7 +30,7 @@ function Body() {
   return (
     <div>
       <div className='form-field'>
-        <textarea id='proposalDetails' rows='6' placeholder='About Project'></textarea>
+        <textarea id='proposalDetails' rows='6' placeholder='About Project' ></textarea>
       </div>
       {deliverables.map((deliverable, index) => (
         <div key={deliverable.id} className='deliverable'>
