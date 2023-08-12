@@ -3,44 +3,65 @@
     align-items: center;
   }
 
+  .colored-dot {
+    color: #D7E401; /* Your desired color code */
+    margin-right: 8px; /* Adjust as needed */
+    font-size: 20px;
+  }
+
+  .light-font {
+    font-weight: 300; 
+    /* font-size: large; */
+  }
+  
+ 
   .top , .middle{
     margin-top: 2%;
-    margin-left: 22%;
+    margin-left: 10%;
   }
 
   .a{
-    margin-top: 2%;
+    margin-top: 4%;
   }
 
   .c{
-    margin-top: 2%;
+    margin-top: 4%;
   }
   
-  .e{
-    margin-top: 2%;
+  .e {  
+    margin-top: 4%;
   }
 
   .t{
-    margin-right: 25%;
+    margin-right: 15%;
+    font-weight: 300;
   }
   .b{
     margin-left: 22%;
     margin-top: 2%;
   }
-  /* .pdf-container {
-    width: 595px;
-  height: 842px; 
-  } */
-
+  
+  .top p{
+    font-size: large;
+  }
   .logo_container{
+    margin-left: 9%;
     display: flex;
-    justify-content: space-around;
+  }
+
+  .solid-line {
+    border-top: 1px solid black; /* Adjust the color and thickness as needed */
+    margin: 20px 0; /* Adjust the margin as needed */
+  }
+
+  .LogC{
+    margin-left: 450px;
   }
 
   .logoA img,
 .logoC img{
-  max-width: 150px; /* Adjust the image size as needed */
-  max-height: 100px; /* Adjust the image size as needed */
+  max-width: 150px; 
+  max-height: 150px; 
 }
   
 .A{
@@ -49,12 +70,27 @@
 
 }
 
-.f {
-  
-  margin-top: auto; 
+.foot {
+  display: flex;
+  margin-top: 40%; 
+  position: fixed;
+}
+.pg{
+  margin-top: 1%;
+  margin-left: 3%;
+  background-color: #D7E401;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 1%;
+  padding-right: 2%;
 }
 
 .B{
   page-break-before: always;
 }
   
+.l{
+  margin-top: 2%;
+  margin-left: 22%;
+  
+}

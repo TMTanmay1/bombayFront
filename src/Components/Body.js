@@ -2,11 +2,11 @@ import React, { useState , useEffect } from 'react';
 import '../Styles/Body.css';
 import TalentReq from './TalentReq';
 import Postproduction from './PostProduction.js';
-import { useSelector } from "react-redux";
-
+import { useSelector , useDispatch } from "react-redux";
+import { addDeliverable, updateDeliverable } from '../store/slice/formSlice';
 
 function Body() {
-  
+  const dispatch = useDispatch();
   const data1 = useSelector((state) => state.users);
   const data2 = useSelector((state) => state.users2);
 
@@ -20,10 +20,14 @@ function Body() {
     const updatedDeliverables = [...deliverables];
     updatedDeliverables[index] = { ...updatedDeliverables[index], [name]: value };
     setDeliverables(updatedDeliverables);
+    dispatch(updateDeliverable({ index, updatedData: updatedDeliverables[index] }));
   };
 
   const handleAddDeliverable = () => {
-    setDeliverables([...deliverables, { option: '', otherOption: '', id: Date.now() }]);
+    // setDeliverables([...deliverables, { option: '', otherOption: '', id: Date.now() }]);
+    const newDeliverable = { option: '', otherOption: '', id: Date.now() };
+  setDeliverables([...deliverables, newDeliverable]);
+  dispatch(addDeliverable(newDeliverable));
   };
 
 

@@ -6,6 +6,9 @@ const initialState = {
   brandName: '',
   clientName: '',
   projectDuration:'',
+  deliverablesData: [],
+  selectedTalents: [],
+  extraTalents: [],
   // contactNo: '',
   // emailId: '',
   // selectedService: '',
@@ -34,8 +37,34 @@ const formSlice = createSlice({
     selectService: (state, action) => {
       state.selectedService = action.payload;
     },
+    addDeliverable: (state, action) => {
+      state.deliverablesData.push(action.payload);
+    },
+    updateDeliverable: (state, action) => {
+      const { index, updatedData } = action.payload;
+      state.deliverablesData[index] = updatedData;
+    },
+    addSelectedTalent: (state, action) => {
+      state.selectedTalents.push(action.payload);
+    },
+    removeSelectedTalent: (state, action) => {
+      state.selectedTalents = state.selectedTalents.filter(
+        (talent) => talent !== action.payload
+      );
+    },
+    addExtraTalent: (state, action) => {
+      state.extraTalents.push(action.payload);
+    },
+    removeExtraTalent: (state, action) => {
+      state.extraTalents = state.extraTalents.filter(
+        (talent) => talent !== action.payload
+      );
+    },
   },
 });
 
-export const { updateFormData,updateBr,updateCn, updatePd, selectService } = formSlice.actions;
+export const { updateFormData,updateBr,updateCn, updatePd, selectService , addDeliverable, updateDeliverable ,addSelectedTalent,
+  removeSelectedTalent,
+  addExtraTalent,
+  removeExtraTalent, } = formSlice.actions;
 export default formSlice.reducer;

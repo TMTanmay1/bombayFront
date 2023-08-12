@@ -6,13 +6,13 @@ import LogoB from '../assets/pdf_logo.png';
 import Logo from '../assets/bg.jpg'
 import { useReactToPrint } from 'react-to-print';
 
-function Gp() {
+function Gp(props) {
   const componentRef = useRef()
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle:false,
-    // pageStyle: '@page { size: A4 landscape; margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; padding: 0mm; } }',
+    pageStyle: '@page { size: A4 potrait; margin: 0mm; }',
     onAfterPrint: () => alert('Print success!')
   })
 
@@ -21,7 +21,13 @@ function Gp() {
   const brandN = location.state.brandN
   const clientN = location.state.clientN
   const projectD = location.state.projectD
-  console.log(projectD);
+  const deli = location.state.deli
+  const talop = location.state.talop
+  const clientLogo = location.state.clientLogo;
+
+  // console.log(talop);
+  // console.log(projectD);
+  // console.log(deli);
 
   useEffect(() => {
     const pdfContainer = componentRef.current;
@@ -37,10 +43,10 @@ function Gp() {
       <div className='A'>
       <div className='logo_container'>
       <div className="logoA">
-        <img src={Logo} alt='' />
+      {clientLogo && <img src={URL.createObjectURL(clientLogo)} alt='Client Logo' />}
       </div>
       <div className="logoC">
-        <img src={LogoB} alt='' />
+        <img className='LogC' src={LogoB} alt='Company Logo' />
       </div>
       </div>
       <div className='top'>
@@ -60,40 +66,49 @@ function Gp() {
 
         <div className='a'>
         <h4 className='d'>Deliverable:</h4>
-        <p>Motion Poster</p>
-        <p>Photography</p>
-        </div>
+                    {deli.map((item, index) => (
+              <div key={item.id}>
+                {item.option !== 'other' ? (
+                  <p><span className="colored-dot">&#8226;</span> <span className="light-font">{item.option}</span></p>
+                ) : (
+                  <p><span className="colored-dot">&#8226;</span> <span className="light-font">{item.otherOption}</span></p>
+                )}
+              </div>
+            ))}
+        </div> 
 
         <div className='c'>
         <h4 className='d'>Duration:</h4>
-        <p>{projectD}</p>
+        <p><span className="light-font">{projectD}</span></p>
 
         </div>
 
         <div className='e'>
         <h4 className='d'>The Team:</h4>
-        <p>Director</p>
-        <p>Cinematographer</p>
-        <p>Makeup Artist</p>
+        
+        {talop.map((teamMember, index) => (
+              <p key={index} ><span className="colored-dot">&#8226;</span> <span className="light-font">{teamMember}</span></p>
+            ))}
         </div>
 
-        <div className='f'>
-          <p>-------------------------------------------------------------------------------</p>
+        <div className='foot'>
+          <div>
+          <div className="solid-line"></div>
           <h4>BombayCat Flims Pvt Ltd.</h4>
-          <p>NDBI, NID Campus, opposite Tagore Hall, Paldi, Ahmedabad, Gujarat 380007 </p>
-          <p><strong>Ph:</strong> +91-63 5881 5887     E-mail: <strong>hi@bombaycatflims.com</strong></p>
-          <p>WEB:<strong> www.bombaycatflims.com</strong></p>
+          <p><span className="light-font">NDBI, NID Campus, opposite Tagore Hall, Paldi, Ahmedabad, Gujarat 380007</span> </p>
+          <p><strong>Ph:</strong><span className="light-font">+91-63 5881 5887 </span>  E-mail: <strong>hi@bombaycatflims.com</strong> WEB:<strong> www.bombaycatflims.com</strong></p>
           </div>
+          <div className='pg'>
+            <p><strong>1</strong></p>
+          </div>
+          </div>
+
         </div>
 
         </div>
         <div className='B'>
-        <div className='f'>
-          <p>-------------------------------------------------------------------------------</p>
-          <h4>BombayCat Flims Pvt Ltd.</h4>
-          <p>NDBI, NID Campus, opposite Tagore Hall, Paldi, Ahmedabad, Gujarat 380007 </p>
-          <p><strong>Ph:</strong> +91-63 5881 5887     E-mail: <strong>hi@bombaycatflims.com</strong></p>
-          <p>WEB:<strong> www.bombaycatflims.com</strong></p>
+          <div className='l'>
+          <p><strong>This is second page.</strong></p>
           </div>
         </div>
     </div>

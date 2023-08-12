@@ -6,6 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { updatePd } from '../store/slice/formSlice';
 
 function Payment_Method() {
+  const [clientLogo, setClientLogo] = useState(null);
+
+  const handleLogoUpload = (event) => {
+    const uploadedLogo = event.target.files[0];
+    setClientLogo(uploadedLogo);
+  }
   const dispatch = useDispatch();
   const [pd , Spd] = useState()
 
@@ -20,6 +26,12 @@ function Payment_Method() {
   const  brandName = useSelector((state) => state.form.brandName);
   const  clientName = useSelector((state) => state.form.clientName);
   const projectDuration = useSelector((state) => state.form.projectDuration);
+  const deliverablesData = useSelector((state) => state.form.deliverablesData);
+  const selectedTalents = useSelector((state) => state.form.selectedTalents);
+ 
+  console.log(deliverablesData);
+  console.log(selectedTalents);
+  
 
   console.log(brandName);
   console.log(clientName);
@@ -39,13 +51,18 @@ function Payment_Method() {
   const [brandN , setBrandN] = useState(brandName)
   const [clientN , setClientN] = useState(clientName)
   const [projectD , setProjectD] = useState(projectDuration)
+  const [deli , setDeli] = useState(deliverablesData)
+  const [talop , setTalop] = useState(selectedTalents)
+
   const passData = () => {
     navigate('/proposal/pdf', {
       state: {
-        propsalN,
         brandN,
         clientN,
-        projectD
+        projectD,
+        deli,
+        talop,
+        clientLogo
       }
     });
   }
@@ -235,7 +252,7 @@ function Payment_Method() {
 
           <div className="client-logo-container">
             <label className="client-logo-label" htmlFor="ClientLogo">Upload Client Logo:</label>
-            <input id="ClientLogo" className="client-logo-input" type="file" accept=".jpg, .jpeg" />
+            <input id="ClientLogo" className="client-logo-input" type="file" accept=".jpg, .jpeg , .png" onChange={handleLogoUpload}/>
           </div>
         </div>
 
