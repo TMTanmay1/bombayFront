@@ -1,4 +1,4 @@
-import React ,{useRef , useEffect} from 'react'
+import React ,{useRef , useEffect , useState} from 'react'
 import '../Styles/Gp.css';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -17,13 +17,14 @@ function Gp(props) {
   })
 
   const location = useLocation();
-  // const propsalN = location.state.propsalN
-  const brandN = location.state.brandN
+  const propsalN = location.state.proposalNumber
+  const brandN = location.state.brandName
   const clientN = location.state.clientN
   const projectD = location.state.projectD
   const deli = location.state.deli
   const talop = location.state.talop
   const clientLogo = location.state.clientLogo;
+  const selectService = location.state.selectService;
 
   // console.log(talop);
   // console.log(projectD);
@@ -37,6 +38,16 @@ function Gp(props) {
     }
   }, []);
 
+      const currentDate = new Date().toLocaleDateString('en-GB');
+
+      const [validThroughDate, setValidThroughDate] = useState('');
+
+    useEffect(() => {
+      const currentDateObj = new Date();
+      const validThroughDateObj = new Date(currentDateObj.setDate(currentDateObj.getDate() + 45));
+      setValidThroughDate(validThroughDateObj.toLocaleDateString('en-GB'));
+    }, []);
+
   return (
     <div className='big'>
     <div ref={componentRef} className='.pdf-container'>
@@ -49,10 +60,34 @@ function Gp(props) {
         <img className='LogC' src={LogoB} alt='Company Logo' />
       </div>
       </div>
+
+      <div className='date'>
+        <div className="fie">
+        <label htmlFor="date">Date:</label>
+        <input id="_date" type="text" value={currentDate} readOnly />
+        </div>
+
+        <div className='fiel'>
+        <div className="fie">
+        <label htmlFor="validThrough">Valid Through:</label>
+        <input id="_validThrough" type="text" value={validThroughDate} readOnly/>
+        </div>
+     
+      <div className='fie'>
+        <label id='PNumber' htmlFor='Proposal_N'>ProposalNo:</label>
+        <input  id='PNumber' type='text' value={propsalN} ></input>
+      </div>
+      </div>
+      </div>
       <div className='top'>
         <p>To,</p>
         <p>{clientN}</p>
         <p>{brandN}</p>
+
+        <div className='field'>
+          <label htmlFor='PCategory'>Project Category:</label>
+          <input id='PCategory' type='text' value={selectService}/>
+        </div>
       </div>
       <div className='middle'>
         <div>
@@ -79,16 +114,9 @@ function Gp(props) {
 
         <div className='c'>
         <h4 className='d'>Duration:</h4>
-        <p><span className="light-font">{projectD}</span></p>
+        <p><span className="colored-dot">&#8226;</span><span className="light-font">{projectD}</span></p>
 
-        </div>
-
-        <div className='e'>
-        <h4 className='d'>The Team:</h4>
-        
-        {talop.map((teamMember, index) => (
-              <p key={index} ><span className="colored-dot">&#8226;</span> <span className="light-font">{teamMember}</span></p>
-            ))}
+        <p className='sta'>Time taken by the client for approvals and change requests will be not included in provided duration.</p>
         </div>
 
         <div className='foot'>

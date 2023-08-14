@@ -38,7 +38,10 @@
     const [selectedService, setSelectedService] = useState('');
 
     const handleServiceChange = (event) => {
-      setSelectedService(event.target.value);
+      const p = event.target.value;
+      console.log(p);
+      setSelectedService(event.target.value)
+     dispatch(selectService(p)) ;
     };
 
     return (
@@ -50,8 +53,7 @@
         <div className='form-container'>
         <div className='form-field'>
           <label id='PNumber' htmlFor='Proposal_N'>Proposal Number:</label>
-          <input  id='PNumber' type='text'  onBlur={handlePnumber}
-          ></input>
+          <input  id='PNumber' type='text'  onBlur={handlePnumber}></input>
           </div>
           <div className='form-row'>
             <div className='form-field'>

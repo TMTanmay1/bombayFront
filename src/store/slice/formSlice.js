@@ -11,7 +11,7 @@ const initialState = {
   extraTalents: [],
   // contactNo: '',
   // emailId: '',
-  // selectedService: '',
+  selectedService: '',
 };
 
 const formSlice = createSlice({

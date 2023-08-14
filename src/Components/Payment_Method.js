@@ -28,14 +28,16 @@ function Payment_Method() {
   const projectDuration = useSelector((state) => state.form.projectDuration);
   const deliverablesData = useSelector((state) => state.form.deliverablesData);
   const selectedTalents = useSelector((state) => state.form.selectedTalents);
- 
-  console.log(deliverablesData);
+  const selectService = useSelector((state)=> state.form.selectedService)
+
+  console.log(proposalNumber);
+  console.log(selectService);
+  console.log(deliverablesData); 
   console.log(selectedTalents);
   
 
   console.log(brandName);
   console.log(clientName);
-  console.log(proposalNumber);
   console.log(projectDuration);
 
   const navigate = useNavigate();
@@ -47,8 +49,8 @@ function Payment_Method() {
   const data5 = useSelector((state) => state.user5);
   const data6 = useSelector((state) => state.user6);
 
-  const [propsalN , setProposalN] = useState(proposalNumber)
-  const [brandN , setBrandN] = useState(brandName)
+  // const [propsalN , setProposalN] = useState(proposalNumber)
+  // const [brandN , setBrandN] = useState(brandName)
   const [clientN , setClientN] = useState(clientName)
   const [projectD , setProjectD] = useState(projectDuration)
   const [deli , setDeli] = useState(deliverablesData)
@@ -57,12 +59,14 @@ function Payment_Method() {
   const passData = () => {
     navigate('/proposal/pdf', {
       state: {
-        brandN,
+        brandName,
         clientN,
         projectD,
         deli,
         talop,
-        clientLogo
+        clientLogo,
+        proposalNumber,
+        selectService
       }
     });
   }

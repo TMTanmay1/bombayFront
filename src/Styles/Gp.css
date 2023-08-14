@@ -1,6 +1,19 @@
    .big {
-    margin-top: 5%;    
-    align-items: center;
+    /* margin-top: 5%;    
+    align-items: center; */
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  }
+
+  .pdf-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%; /* Take up full available height */
+    padding: 20px; /* Add padding to the container */
   }
 
   .colored-dot {
@@ -47,6 +60,9 @@
   .logo_container{
     margin-left: 9%;
     display: flex;
+
+  align-items: center;
+  margin-bottom: 20px;
   }
 
   .solid-line {
@@ -72,17 +88,19 @@
 
 .foot {
   display: flex;
-  margin-top: 40%; 
-  position: fixed;
+  margin-top: 50%; 
+  max-width: 800px;
+  height: fit-content;
+  bottom: 0 ;
 }
 .pg{
-  margin-top: 1%;
+  margin-top: 2rem;
   margin-left: 3%;
   background-color: #D7E401;
   padding-top: 2%;
   padding-bottom: 2%;
-  padding-left: 1%;
-  padding-right: 2%;
+  /* padding-left: 1%; */
+  /* padding-right: 2%; */
 }
 
 .B{
@@ -94,3 +112,38 @@
   margin-left: 22%;
   
 }
+
+.date{
+  display: flex;
+  margin-left: 10%;
+}
+/* .fie{
+  display: flex;
+}
+
+.fie label{
+  margin-top: 1%;
+  color: #0C2939;
+}
+
+.fie input{
+  border: none;
+  background-color: white;
+} */
+
+#PCategory{
+  border: none;
+}
+
+.field label{
+  color: #0C2939;
+}
+
+.d {
+  color: #0C2939;
+}
+
+/* .fiel{
+  display: flex;
+  flex-direction: column;
+} */
