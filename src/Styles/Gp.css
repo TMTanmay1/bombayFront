@@ -1,149 +1,303 @@
-   .big {
-    /* margin-top: 5%;    
-    align-items: center; */
-    display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* height: 100vh; */
-  }
-
-  .pdf-container {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    height: 100%; /* Take up full available height */
-    padding: 20px; /* Add padding to the container */
-  }
-
-  .colored-dot {
-    color: #D7E401; /* Your desired color code */
-    margin-right: 8px; /* Adjust as needed */
-    font-size: 20px;
-  }
-
-  .light-font {
-    font-weight: 300; 
-    /* font-size: large; */
-  }
-  
- 
-  .top , .middle{
-    margin-top: 2%;
-    margin-left: 10%;
-  }
-
-  .a{
-    margin-top: 4%;
-  }
-
-  .c{
-    margin-top: 4%;
-  }
-  
-  .e {  
-    margin-top: 4%;
-  }
-
-  .t{
-    margin-right: 15%;
-    font-weight: 300;
-  }
-  .b{
-    margin-left: 22%;
-    margin-top: 2%;
-  }
-  
-  .top p{
-    font-size: large;
-  }
-  .logo_container{
-    margin-left: 9%;
-    display: flex;
-
-  align-items: center;
-  margin-bottom: 20px;
-  }
-
-  .solid-line {
-    border-top: 1px solid black; /* Adjust the color and thickness as needed */
-    margin: 20px 0; /* Adjust the margin as needed */
-  }
-
-  .LogC{
-    margin-left: 450px;
-  }
-
-  .logoA img,
-.logoC img{
-  max-width: 150px; 
-  max-height: 150px; 
+.big {
+  /* margin-top: 5%;    
+  align-items: center; */
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+/* height: 100vh; */
 }
-  
-.A{
+
+.pdf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%; /* Take up full available height */
+  padding: 20px; /* Add padding to the container */
+}
+
+.colored-dot {
+  color: #D7E401; /* Your desired color code */
+  margin-right: 8px; /* Adjust as needed */
+  font-size: 20px;
+}
+
+.light-font {
+  font-weight: 300; 
+  /* font-size: large; */
+}
+
+
+.top , .middle{
+  margin-top: 2%;
+  margin-left: 10%;
+}
+
+.a{
+  margin-top: 4%;
+}
+
+.c{
+  margin-top: 4%;
+}
+
+.e {  
+  margin-top: 4%;
+  margin-left: 10%;
+  height: 500px;
+}
+
+.t{
+  margin-right: 15%;
+  font-weight: 300;
+}
+.b{
+  margin-left: 22%;
+  margin-top: 2%;
+}
+
+.top p{
+  font-size: large;
+}
+.logo_container_A{
+  margin-left: 11%;
+  display: flex;
+
+align-items: center;
+margin-bottom: 20px;
+}
+
+.logo_container_B{
+  margin-left: 11%;
+  display: flex;
   margin-top: 5%;
-  page-break-before: always;
+align-items: center;
+margin-bottom: 20px;
+}
+
+
+
+.solid-line {
+  border-top: 1px solid black; /* Adjust the color and thickness as needed */
+  margin: 20px 0; /* Adjust the margin as needed */
+}
+
+.line{
+  border-top: 2px solid #DEDEDE; /* Adjust the color and thickness as needed */
+  margin: 10px 0; 
+}
+
+.LogC{
+  margin-left: 450px;
+}
+
+.logoA img,
+.logoC img{
+max-width: 150px; 
+max-height: 150px; 
+}
+
+.A{
+margin-top: 5%;
+page-break-before: always;
 
 }
 
 .foot {
-  display: flex;
-  margin-top: 50%; 
-  max-width: 800px;
-  height: fit-content;
-  bottom: 0 ;
+display: flex;
+margin-top: 9%; 
+max-width: 800px;
+height: fit-content;
+bottom: 0 ;
 }
+
+.foot_B{
+  display: flex;
+margin-top: 7%; 
+max-width: 800px;
+height: fit-content;
+bottom: 0 ;
+margin-left: 10%;
+}
+
+.foot_C{
+  display: flex;
+margin-top: 1%; 
+max-width: 800px;
+height: fit-content;
+bottom: 0 ;
+margin-left: 10%;
+}
+
+.foot_D{
+  display: flex;
+margin-top: 20%; 
+max-width: 800px;
+height: fit-content;
+bottom: 0 ;
+margin-left: 10%;
+}
+
 .pg{
-  margin-top: 2rem;
-  margin-left: 3%;
-  background-color: #D7E401;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  /* padding-left: 1%; */
-  /* padding-right: 2%; */
+margin-top: 2rem;
+margin-left: 3%;
+background-color: #D7E401;
+padding-top: 2%;
+padding-bottom: 2%;
+/* padding-left: 1%; */
+/* padding-right: 2%; */
 }
 
 .B{
-  page-break-before: always;
+page-break-before: always;
 }
-  
+
 .l{
-  margin-top: 2%;
-  margin-left: 22%;
-  
+margin-top: 2%;
+margin-left: 22%;
+
 }
 
 .date{
-  display: flex;
-  margin-left: 10%;
+display: flex;
+margin-left: 10%;
 }
-/* .fie{
+.fie{
   display: flex;
+  
 }
 
-.fie label{
+.fie label {
+margin-top: 1%;
+color: #0C2939;
+}
+
+.field h4{
   margin-top: 1%;
-  color: #0C2939;
 }
-
-.fie input{
-  border: none;
-  background-color: white;
-} */
 
 #PCategory{
-  border: none;
+  margin-top: 2%;
+}
+.fie input{
+border: none;
+background-color: white;
+}
+
+#PCategory{
+border: none;
 }
 
 .field label{
-  color: #0C2939;
+color: #0C2939;
+}
+
+#_date{
+  height: fit-content;
 }
 
 .d {
-  color: #0C2939;
+color: #0C2939;
 }
 
-/* .fiel{
+.fiel{
+display: flex;
+flex-direction: column;
+margin-left: 12rem;
+float: right;
+}
+
+.sta{
+padding-top: 25px;
+margin-right: 15%;
+} 
+
+.Knowledge{
+  margin-left: 10%;
+}
+
+.terms p{
+  margin-top: 2%;
+  margin-right: 15%;
+}
+
+.kind{
+  font-size: large;
+}
+
+.Knowledge p {
+  margin-top: 2%;
+  margin-right: 15%;
+}
+
+.C{
+  page-break-before: always;
+}
+
+.D{
+  page-break-before: always;
+}
+
+.logo_container_D{
+  margin-left: 11%;
   display: flex;
-  flex-direction: column;
-} */
+  margin-top: 5%;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.logo_container_C{
+  margin-left: 11%;
+  display: flex;
+  margin-top: 5%;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.mid{
+  margin-top: 2%;
+  margin-left: 10%;
+}
+
+.m_head{
+  height: 250px;
+  margin-top: 1%;
+  display: flex;
+}
+
+.n{
+  margin-left: 32rem;
+}
+
+.to{
+  display: flex;
+}
+
+.x{
+  margin-left: 33rem;
+}
+
+.pay{
+  margin-top: 1%;
+  height: 300px;
+}
+
+.dic{
+  margin-top: 1%;
+}
+
+.akw{
+  margin-top: 7%;
+  display: flex;
+}
+
+.y{
+  margin-left: 30%;
+}
+
+.greet{
+  margin-top: 5%;
+  font-size: large;
+  text-align: left;
+  margin-left: 14%;
+}
