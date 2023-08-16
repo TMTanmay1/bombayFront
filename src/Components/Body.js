@@ -3,7 +3,7 @@ import '../Styles/Body.css';
 import TalentReq from './TalentReq';
 import Postproduction from './PostProduction.js';
 import { useSelector , useDispatch } from "react-redux";
-import { addDeliverable, updateDeliverable } from '../store/slice/formSlice';
+import { addDeliverable, updateDeliverable  , updateProposalDetails} from '../store/slice/formSlice';
 
 function Body() {
   const dispatch = useDispatch();
@@ -30,11 +30,20 @@ function Body() {
   dispatch(addDeliverable(newDeliverable));
   };
 
+  const handleProposalDetailsBlur = (event) => {
+    const value = event.target.value;
+    dispatch(updateProposalDetails(value));
+  };
+
 
   return (
     <div>
       <div className='form-field'>
-        <textarea id='proposalDetails' rows='6' placeholder='About Project' ></textarea>
+        <textarea id='proposalDetails'
+          rows='6'
+          placeholder='About Project'
+          onBlur={handleProposalDetailsBlur}
+           ></textarea>
       </div>
       {deliverables.map((deliverable, index) => (
         <div key={deliverable.id} className='deliverable'>

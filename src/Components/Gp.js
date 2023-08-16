@@ -8,14 +8,14 @@ import { useReactToPrint } from "react-to-print";
 
 function Gp(props) {
   const componentRef = useRef();
-  const hasGST = true;
+  
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: false,
     pageStyle: "@page { size: A4 potrait; margin: 0mm; }",
     onAfterPrint: () => alert("Print success!"),
   });
-
+  
   const location = useLocation();
   const propsalN = location.state.proposalNumber;
   const brandN = location.state.brandName;
@@ -25,11 +25,18 @@ function Gp(props) {
   const talop = location.state.talop;
   const clientLogo = location.state.clientLogo;
   const selectService = location.state.selectService;
-
+  const selectedProposalAuthorized = location.state.selectedProposalAuthorized;
+  const gstChecked = location.state.gstChecked;
+  const proposalDetails = location.state.proposalDetails;
+  const pCost = location.state.pCost;
+  const hasGST = gstChecked;
+  const gstCost = hasGST ? location.state.gstCost : 0;
+  
   // console.log(talop);
   // console.log(projectD);
   // console.log(deli);
 
+  
   
   const currentDate = new Date().toLocaleDateString("en-GB");
 
@@ -44,7 +51,7 @@ function Gp(props) {
   }, []);
 
   let designation = '';
-  let val = 'Maqbool Shaikh'
+  let val = selectedProposalAuthorized
   if (val === 'Maqbool Shaikh') {
     designation = 'Co-Founder & CEO';
   } else if (val === 'Kumar Rohit') {
@@ -89,28 +96,27 @@ function Gp(props) {
                 <label id="PPNumber" htmlFor="Proposal_N">
                   ProposalNo:
                 </label>
-                <input id="PNumber" type="text" value={propsalN}></input>
+                <input id="PPNumber" type="text" value={propsalN}></input>
               </div>
             </div>
           </div>
           <div className="top">
+            <div className="top_h">
             <p>To,</p>
             <p>{clientN}</p>
             <p>{brandN}</p>
-
+            </div>
             <div className="field">
               <h4 className="d">Project Category:</h4>
               <input id="PCategory" type="text" value={selectService} />
             </div>
           </div>
           <div className="middle">
-            <div>
+            <div className="AP">
               <h4 className="d">About Project:</h4>
               <p className="t">
-                A 60 year old family run plant-business that has supplied the
-                green demands of enterprises and people alike, finds itself at a
-                pivotal junction with the reigns to its destiny being shared
-                with the next generation of the family, the Satyarthy brothers.
+            
+                {proposalDetails}
               </p>
             </div>
 
@@ -134,7 +140,7 @@ function Gp(props) {
             </div>
 
             <div className="c">
-              <h4 className="d">Duration:</h4>
+              <h4 className="d">Project Duration:</h4>
               <p>
                 <span className="colored-dot">&#8226;</span>
                 <span className="light-font">{projectD}</span>
@@ -188,12 +194,12 @@ function Gp(props) {
         <div className="e">
           <h4 className="d">The Team:</h4>
 
-          {talop.map((teamMember, index) => (
-            <p key={index}>
-              <span className="colored-dot">&#8226;</span>{" "}
-              <span className="light-font">{teamMember}</span>
-            </p>
-          ))}
+          <div className={talop.length > 13 ? 'two-column-list' : 'normal-list'}>
+        {talop.map((teamMember, index) => (
+            <p key={index}><span className="colored-dot">&#8226;</span> <span className="light-font">{teamMember}</span></p>
+        ))}
+          </div>
+
         </div>
 
         <div className="Knowledge">
@@ -276,16 +282,23 @@ function Gp(props) {
                     )}
                   </div>
                 ))}
-                <p>
-                  <strong>GST:</strong>
-                </p>
+               {hasGST && (
+                  <p>
+                    GST
+                  </p>
+                )}
               </div>
               <div className="n">
                 <p>
                   <strong>Subtotal</strong>
                 </p>
                 <div className="line"></div>
-                <p>1000000</p>
+                <p>{pCost}</p>
+                {hasGST && (
+                    <p>
+                      {gstCost}
+                    </p>
+                  )}
               </div>
             </div>
 
@@ -294,12 +307,23 @@ function Gp(props) {
                 <strong>Total</strong>
               </p>
               <p className="x">
-                <strong>100000</strong>
+                <strong>{parseFloat(pCost) + parseFloat(gstCost)}</strong>
               </p>
             </div>
 
             <div className="pay">
               <h4 className="d">Project wise Payment & Milestones:</h4>
+              <table className="table">
+            <thead>
+              <tr>
+                <th>Milestone</th>
+                <th>Payment Method</th>
+                <th>value</th>
+                <th>GST</th>
+                {/* {hasGST && <th>GST</th>} */}
+              </tr>
+            </thead>
+          </table>
             </div>
 
             <div className="det">

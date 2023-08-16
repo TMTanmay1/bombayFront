@@ -29,6 +29,9 @@ function Payment_Method() {
   const deliverablesData = useSelector((state) => state.form.deliverablesData);
   const selectedTalents = useSelector((state) => state.form.selectedTalents);
   const selectService = useSelector((state)=> state.form.selectedService)
+  const proposalDetails = useSelector((state)=> state.form.proposalDetails);
+
+  console.log(proposalDetails);
 
   console.log(proposalNumber);
   console.log(selectService);
@@ -57,6 +60,9 @@ function Payment_Method() {
   const [talop , setTalop] = useState(selectedTalents)
 
   const passData = () => {
+    const selectedProposalAuthorized = document.getElementById('ProposalAuthorized').value;
+    const pCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2);
+    const gstCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18;
     navigate('/proposal/pdf', {
       state: {
         brandName,
@@ -66,7 +72,12 @@ function Payment_Method() {
         talop,
         clientLogo,
         proposalNumber,
-        selectService
+        selectService,
+        selectedProposalAuthorized,
+        gstChecked,
+        proposalDetails,
+        pCost,
+        gstCost
       }
     });
   }
@@ -93,10 +104,12 @@ function Payment_Method() {
       const profitPercentage = parseFloat(companyProfitOption) / 100;
       const selectedPercentage = parseFloat(value.replace('%', '')) / 100;
       updatedRows[index].value = (parseFloat(calculateTotalProjectCost()) * selectedPercentage).toFixed(2);
-      updatedRows[index].gst = (parseFloat(calculateTotalProjectCost()) * selectedPercentage * 0.18).toFixed(2);
+      updatedRows[index].gst = ((parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18)*selectedPercentage;
     }
     setTableRows(updatedRows);
   };
+
+  
 
   const handleDuplicateReferenceUrl = () => {
     setDuplicatedReferenceUrls([...duplicatedReferenceUrls, duplicatedReferenceUrls.length]);

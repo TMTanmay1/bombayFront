@@ -12,6 +12,7 @@ const initialState = {
   // contactNo: '',
   // emailId: '',
   selectedService: '',
+  proposalDetails: '',
 };
 
 const formSlice = createSlice({
@@ -60,11 +61,14 @@ const formSlice = createSlice({
         (talent) => talent !== action.payload
       );
     },
+    updateProposalDetails: (state, action) => {
+      state.proposalDetails = action.payload;
+    },
   },
 });
 
 export const { updateFormData,updateBr,updateCn, updatePd, selectService , addDeliverable, updateDeliverable ,addSelectedTalent,
   removeSelectedTalent,
   addExtraTalent,
-  removeExtraTalent, } = formSlice.actions;
+  removeExtraTalent, updateProposalDetails } = formSlice.actions;
 export default formSlice.reducer;
