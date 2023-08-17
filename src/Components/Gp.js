@@ -60,6 +60,8 @@ function Gp(props) {
     designation = 'Co-Founder & CTO';
   }
 
+  
+
   return (
     <div className="big">
       <div ref={componentRef} className=".pdf-container">
@@ -313,15 +315,18 @@ function Gp(props) {
 
             <div className="pay">
               <h4 className="d">Project wise Payment & Milestones:</h4>
-              <table className="table">
+              <table className="milestone-table">
             <thead>
               <tr>
                 <th>Milestone</th>
                 <th>Payment Method</th>
                 <th>value</th>
-                <th>GST</th>
-                {/* {hasGST && <th>GST</th>} */}
+                {/* <th>GST</th> */}
+                {hasGST && <th>GST</th>}
               </tr>
+              <tbody>
+                    
+              </tbody>
             </thead>
           </table>
             </div>

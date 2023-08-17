@@ -25,7 +25,7 @@ function Payment_Method() {
   const proposalNumber = useSelector((state) => state.form.proposalNumber);
   const  brandName = useSelector((state) => state.form.brandName);
   const  clientName = useSelector((state) => state.form.clientName);
-  const projectDuration = useSelector((state) => state.form.projectDuration);
+  // const projectDuration = useSelector((state) => state.form.projectDuration);
   const deliverablesData = useSelector((state) => state.form.deliverablesData);
   const selectedTalents = useSelector((state) => state.form.selectedTalents);
   const selectService = useSelector((state)=> state.form.selectedService)
@@ -41,7 +41,7 @@ function Payment_Method() {
 
   console.log(brandName);
   console.log(clientName);
-  console.log(projectDuration);
+  // console.log(projectDuration);
 
   const navigate = useNavigate();
   
@@ -55,32 +55,9 @@ function Payment_Method() {
   // const [propsalN , setProposalN] = useState(proposalNumber)
   // const [brandN , setBrandN] = useState(brandName)
   const [clientN , setClientN] = useState(clientName)
-  const [projectD , setProjectD] = useState(projectDuration)
+  // const [projectD , setProjectD] = useState(projectDuration)
   const [deli , setDeli] = useState(deliverablesData)
   const [talop , setTalop] = useState(selectedTalents)
-
-  const passData = () => {
-    const selectedProposalAuthorized = document.getElementById('ProposalAuthorized').value;
-    const pCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2);
-    const gstCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18;
-    navigate('/proposal/pdf', {
-      state: {
-        brandName,
-        clientN,
-        projectD,
-        deli,
-        talop,
-        clientLogo,
-        proposalNumber,
-        selectService,
-        selectedProposalAuthorized,
-        gstChecked,
-        proposalDetails,
-        pCost,
-        gstCost
-      }
-    });
-  }
 
 
   const [companyProfitOption, setCompanyProfitOption] = useState('');
@@ -93,6 +70,7 @@ function Payment_Method() {
     { milestone: '', paymentMethod: '', value1: '', value2: '' },
   ]);
   const handleAddRow = () => {
+   
     setTableRows([...tableRows, { milestone: '', paymentMethod: '', value1: '', value2: '' }]);
   };
 
@@ -179,11 +157,35 @@ function Payment_Method() {
   };
   const companyProfitValue = calculateCompanyProfitValue();
 
+  const passData = () => {
+    const projectD = document.getElementById('ProjectDuration').value;
+    const selectedProposalAuthorized = document.getElementById('ProposalAuthorized').value;
+    const pCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2);
+    const gstCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18;
+    navigate('/proposal/pdf', {
+      state: {
+        brandName,
+        clientN,
+        projectD,
+        deli,
+        talop,
+        clientLogo,
+        proposalNumber,
+        selectService,
+        selectedProposalAuthorized,
+        gstChecked,
+        proposalDetails,
+        pCost,
+        gstCost,
+      }
+    });
+  }
+
   return (
     <div>
       <div className="payment-method-container">
       <label className="payment-method-label" htmlFor="ProjectDuration">Project Duration</label>
-      <input id="ProjectDuration" className="payment-method-input" type="text" onBlur={handleDuration} />
+      <input id="ProjectDuration" className="payment-method-input" type="text" />
      </div>
      <div className="big-container">
         {/* Left Content */}

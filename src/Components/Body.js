@@ -77,7 +77,6 @@ function Body() {
               id={`time-${index}`}
               type='text'
               name='time'
-              value={time}
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
