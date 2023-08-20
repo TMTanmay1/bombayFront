@@ -6,7 +6,7 @@ import LogoB from "../assets/pdf_logo.png";
 import Logo from "../assets/bg.jpg";
 import { useReactToPrint } from "react-to-print";
 
-function Gp(props) {
+function Gp() {
   const componentRef = useRef();
   
   const handlePrint = useReactToPrint({
@@ -19,7 +19,7 @@ function Gp(props) {
   const location = useLocation();
   const propsalN = location.state.proposalNumber;
   const brandN = location.state.brandName;
-  const clientN = location.state.clientN;
+  const clientName = location.state.clientName;
   const projectD = location.state.projectD;
   const deli = location.state.deli;
   const talop = location.state.talop;
@@ -31,6 +31,10 @@ function Gp(props) {
   const pCost = location.state.pCost;
   const hasGST = gstChecked;
   const gstCost = hasGST ? location.state.gstCost : 0;
+  const tableRows = location.state.tableRows;
+  const duplicatedReferenceUrls = location.state.duplicatedReferenceUrls
+
+  console.log(duplicatedReferenceUrls);
   
   // console.log(talop);
   // console.log(projectD);
@@ -105,7 +109,7 @@ function Gp(props) {
           <div className="top">
             <div className="top_h">
             <p>To,</p>
-            <p>{clientN}</p>
+            <p>{clientName}</p>
             <p>{brandN}</p>
             </div>
             <div className="field">
@@ -315,20 +319,36 @@ function Gp(props) {
 
             <div className="pay">
               <h4 className="d">Project wise Payment & Milestones:</h4>
-              <table className="milestone-table">
+              <div id="tab">
+              <table className="mile_table">
             <thead>
-              <tr>
+              
                 <th>Milestone</th>
                 <th>Payment Method</th>
                 <th>value</th>
                 {/* <th>GST</th> */}
                 {hasGST && <th>GST</th>}
-              </tr>
+                </thead>
               <tbody>
+                
+
+              {tableRows.map((row, index) => (
+                <tr  key={index}>
+                  <td >{row.milestone}</td>
+                  <td>{row.paymentMethod}</td>
+
+                  <td>{row.value}</td>
+                  {hasGST && <td>{row.gst}</td>}
+                </tr>
+              ))}
+
+              
                     
               </tbody>
-            </thead>
+            
           </table>
+
+          </div>
             </div>
 
             <div className="det">
@@ -377,6 +397,53 @@ function Gp(props) {
             <div className="pg">
               <p>
                 <strong>3</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="E">
+        <div className="logo_container_D">
+            <div className="logoA">
+              {clientLogo && (
+                <img src={URL.createObjectURL(clientLogo)} alt="Client Logo" />
+              )}
+            </div>
+            <div className="logoC">
+              <img className="LogC" src={LogoB} alt="Company Logo" />
+            </div>
+          </div>
+          <div className="midE">
+            <h4 className="d">Reference URLs:</h4>
+            <ul className="duplicated-urls">
+              {duplicatedReferenceUrls.map((url, index) => (
+                <li key={index}>
+                  <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="foot_E">
+            <div>
+              <div className="solid-line"></div>
+              <h4>BombayCat Flims Pvt Ltd.</h4>
+              <p>
+                <span className="light-font">
+                  NDBI, NID Campus, opposite Tagore Hall, Paldi, Ahmedabad,
+                  Gujarat 380007
+                </span>{" "}
+              </p>
+              <p>
+                <strong>Ph:</strong>
+                <span className="light-font">
+                  +91-63 5881 5887{" "}
+                </span> E-mail: <strong>hi@bombaycatflims.com</strong> WEB:
+                <strong> www.bombaycatflims.com</strong>
+              </p>
+            </div>
+            <div className="pg">
+              <p>
+                <strong>4</strong>
               </p>
             </div>
           </div>
@@ -434,7 +501,7 @@ function Gp(props) {
             </div>
             <div className="y">
               <p className="kind">Acknowledgement: </p>
-              <p className="kind">{clientN}</p>
+              <p className="kind">{clientName}</p>
               <p className="kind">{brandN}</p>
             </div>
           </div>
@@ -461,7 +528,7 @@ function Gp(props) {
             </div>
             <div className="pg">
               <p>
-                <strong>4</strong>
+                <strong>5</strong>
               </p>
             </div>
           </div>

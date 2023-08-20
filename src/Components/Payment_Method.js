@@ -26,8 +26,8 @@ function Payment_Method() {
   const  brandName = useSelector((state) => state.form.brandName);
   const  clientName = useSelector((state) => state.form.clientName);
   // const projectDuration = useSelector((state) => state.form.projectDuration);
-  const deliverablesData = useSelector((state) => state.form.deliverablesData);
-  const selectedTalents = useSelector((state) => state.form.selectedTalents);
+  const deli = useSelector((state) => state.form.deliverablesData);
+  const talop = useSelector((state) => state.form.selectedTalents);
   const selectService = useSelector((state)=> state.form.selectedService)
   const proposalDetails = useSelector((state)=> state.form.proposalDetails);
 
@@ -35,8 +35,8 @@ function Payment_Method() {
 
   console.log(proposalNumber);
   console.log(selectService);
-  console.log(deliverablesData); 
-  console.log(selectedTalents);
+  // console.log(deliverablesData); 
+  // console.log(selectedTalents);
   
 
   console.log(brandName);
@@ -54,10 +54,10 @@ function Payment_Method() {
 
   // const [propsalN , setProposalN] = useState(proposalNumber)
   // const [brandN , setBrandN] = useState(brandName)
-  const [clientN , setClientN] = useState(clientName)
+  // const [clientN , setClientN] = useState(clientName)
   // const [projectD , setProjectD] = useState(projectDuration)
-  const [deli , setDeli] = useState(deliverablesData)
-  const [talop , setTalop] = useState(selectedTalents)
+  // const [deli , setDeli] = useState(deliverablesData)
+  // const [talop , setTalop] = useState(selectedTalents)
 
 
   const [companyProfitOption, setCompanyProfitOption] = useState('');
@@ -74,6 +74,8 @@ function Payment_Method() {
     setTableRows([...tableRows, { milestone: '', paymentMethod: '', value1: '', value2: '' }]);
   };
 
+  console.log(tableRows);
+  console.log(duplicatedReferenceUrls);
   // Function to handle changing data in a row
   const handleChangeRowData = (index, field, value) => {
     const updatedRows = [...tableRows];
@@ -89,9 +91,20 @@ function Payment_Method() {
 
   
 
+  // const handleDuplicateReferenceUrl = () => {
+  //   setDuplicatedReferenceUrls([...duplicatedReferenceUrls, duplicatedReferenceUrls.length]);
+  // };
+
   const handleDuplicateReferenceUrl = () => {
-    setDuplicatedReferenceUrls([...duplicatedReferenceUrls, duplicatedReferenceUrls.length]);
+    const referenceUrlInput = document.getElementById('ReferenceUrl');
+    if (referenceUrlInput) {
+      const referenceUrlValue = referenceUrlInput.value;
+      setDuplicatedReferenceUrls([...duplicatedReferenceUrls, referenceUrlValue]);
+      referenceUrlInput.value = ''; // Clear the input after duplicating
+    }
   };
+
+  console.log(duplicatedReferenceUrls);
 
   // Function to remove a duplicated container
   const handleRemoveReferenceUrl = (indexToRemove) => {
@@ -161,11 +174,11 @@ function Payment_Method() {
     const projectD = document.getElementById('ProjectDuration').value;
     const selectedProposalAuthorized = document.getElementById('ProposalAuthorized').value;
     const pCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2);
-    const gstCost = (parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18;
+    const gstCost = ((parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18).toFixed(2);
     navigate('/proposal/pdf', {
       state: {
         brandName,
-        clientN,
+        clientName,
         projectD,
         deli,
         talop,
@@ -177,6 +190,8 @@ function Payment_Method() {
         proposalDetails,
         pCost,
         gstCost,
+        tableRows,
+        duplicatedReferenceUrls
       }
     });
   }
@@ -248,27 +263,39 @@ function Payment_Method() {
               ))}
             </tbody>
           </table>
-
+          
           <div className="reference-url-container">
-            <label className="reference-url-label" htmlFor="ReferenceUrl">Reference Url:</label>
-            <input id="ReferenceUrl" className="reference-url-input" type="url" />
-            <button className="reference-url-plus" onClick={handleDuplicateReferenceUrl}>+</button>
-          </div>
+        <label className="reference-url-label" htmlFor="ReferenceUrl">
+          Reference Url:
+        </label>
+        <input
+          id="ReferenceUrl"
+          className="reference-url-input"
+          type="url"
+        />
+        <button className="reference-url-plus" onClick={handleDuplicateReferenceUrl}>
+          +
+        </button>
+      </div>
 
-          {duplicatedReferenceUrls.map((index) => (
-            <div key={`referenceUrl_${index}`} className="reference-url-container">
-              <label className="reference-url-label" htmlFor="ReferenceUrl">
-                Reference Url:
-              </label>
-              <input id="ReferenceUrl" className="reference-url-input" type="url" />
-              <button className="reference-url-delete" onClick={() => handleRemoveReferenceUrl(index)}>
-                Delete
-              </button>
-            </div>
-          ))}
-
-
-
+      {duplicatedReferenceUrls.map((reference, index) => (
+        <div key={`referenceUrl_${index}`} className="reference-url-container">
+          <label className="reference-url-label" htmlFor={`ReferenceUrl_${index}`}>
+            Reference Url:
+          </label>
+          <input
+            id={`ReferenceUrl_${index}`}
+            className="reference-url-input"
+            type="url"
+            value={reference}
+            readOnly
+          />
+          <button className="reference-url-delete" onClick={() => handleRemoveReferenceUrl(index)}>
+            Delete
+          </button>
+        </div>
+      ))}
+        
           <div className="client-logo-container">
             <label className="client-logo-label" htmlFor="ClientLogo">Upload Client Logo:</label>
             <input id="ClientLogo" className="client-logo-input" type="file" accept=".jpg, .jpeg , .png" onChange={handleLogoUpload}/>
@@ -341,7 +368,7 @@ function Payment_Method() {
             {gstChecked && (
               <>
                 <span className="plus-symbol">+</span>
-                <input id="SecondInput" className="second-input" type="text" value={(parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18}
+                <input id="SecondInput" className="second-input" type="text" value={((parseFloat(companyProfitValue) + parseFloat(calculateTotalCost(data1 + data2, data3 + data4, data5+data6))).toFixed(2) * 0.18).toFixed(2)}
               readOnly />
               <span>for gst 18%</span>
               </>
