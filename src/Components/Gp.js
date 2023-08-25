@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import LogoB from "../assets/pdf_logo.png";
 import Logo from "../assets/bg.jpg";
 import { useReactToPrint } from "react-to-print";
+import { PDFDocument, rgb } from 'pdf-lib';
+import axios from "axios";
 
 function Gp() {
   const componentRef = useRef();
@@ -15,6 +17,8 @@ function Gp() {
     pageStyle: "@page { size: A4 potrait; margin: 0mm; }",
     onAfterPrint: () => alert("Print success!"),
   });
+
+ 
   
   const location = useLocation();
   const propsalN = location.state.proposalNumber;
@@ -32,7 +36,11 @@ function Gp() {
   const hasGST = gstChecked;
   const gstCost = hasGST ? location.state.gstCost : 0;
   const tableRows = location.state.tableRows;
-  const duplicatedReferenceUrls = location.state.duplicatedReferenceUrls
+  const duplicatedReferenceUrls = location.state.duplicatedReferenceUrls;
+  const image1 = location.state.image1;
+  const image2 = location.state.image2;
+  const image3 = location.state.image3;
+  const image4 = location.state.image4;
 
   console.log(duplicatedReferenceUrls);
   
@@ -423,6 +431,25 @@ function Gp() {
               ))}
             </ul>
           </div>
+
+          <div className="midIE">
+            <h4 className="d">MoldBoard:</h4>
+          <div className="images-container">
+                <div className="image">
+                  <img src={URL.createObjectURL(image1)} alt="Image 1" />
+                </div>
+                <div className="image">
+                  <img src={URL.createObjectURL(image2)} alt="Image 2" />
+                </div>
+                <div className="image">
+                  <img src={URL.createObjectURL(image3)} alt="Image 3" />
+                </div>
+                <div className="image">
+                  <img src={URL.createObjectURL(image4)} alt="Image 4" />
+                </div>
+              </div>
+          </div>
+
           <div className="foot_E">
             <div>
               <div className="solid-line"></div>

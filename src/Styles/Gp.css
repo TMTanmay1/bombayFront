@@ -299,7 +299,7 @@ margin-bottom: 20px;
 }
 
 .x{
-  margin-left: 33rem;
+  margin-left: 35rem;
 }
 
 .pay{
@@ -407,5 +407,27 @@ margin-bottom: 20px;
 
 .midE{
   margin-left: 11%;
-  height: 350px;
+  height: 400px;
+}
+
+.midIE{
+  margin-left: 11%;
+  height: 250px;
+}
+
+.images-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.image {
+  flex: 1;
+  padding: 10px;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
 }

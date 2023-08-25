@@ -265,5 +265,19 @@
     margin-left: 10px;
   }
   
+  .image1{
+    display: flex;
+    margin-top: 1%;
+  }
+  .image1 label {
+    margin-top: 1%;
+  }
+  .image1 input {
+    margin-left: 3%;
+    width: 100%;
+  }
+  .moldboard{
+    margin-top: 2%;
+  }
   
   

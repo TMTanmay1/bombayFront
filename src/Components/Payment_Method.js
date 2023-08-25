@@ -7,6 +7,30 @@ import { updatePd } from '../store/slice/formSlice';
 
 function Payment_Method() {
   const [clientLogo, setClientLogo] = useState(null);
+  const [image1 , setImage1] = useState(null);
+  const [image2 , setImage2] = useState(null);
+  const [image3 , setImage3] = useState(null);
+  const [image4 , setImage4] = useState(null);
+
+  const I1U = (event) => {
+    const I1 = event.target.files[0]
+    setImage1(I1);
+  }
+
+  const I2U = (event) => {
+    const I2 = event.target.files[0]
+    setImage2(I2);
+  }
+
+  const I3U = (event) => {
+    const I3 = event.target.files[0]
+    setImage3(I3);
+  }
+
+  const I4U = (event) => {
+    const I4 = event.target.files[0]
+    setImage4(I4);
+  }
 
   const handleLogoUpload = (event) => {
     const uploadedLogo = event.target.files[0];
@@ -191,7 +215,11 @@ function Payment_Method() {
         pCost,
         gstCost,
         tableRows,
-        duplicatedReferenceUrls
+        duplicatedReferenceUrls,
+        image1,
+        image2,
+        image3,
+        image4,
       }
     });
   }
@@ -299,6 +327,27 @@ function Payment_Method() {
           <div className="client-logo-container">
             <label className="client-logo-label" htmlFor="ClientLogo">Upload Client Logo:</label>
             <input id="ClientLogo" className="client-logo-input" type="file" accept=".jpg, .jpeg , .png" onChange={handleLogoUpload}/>
+          </div>
+
+
+          <div className='moldboard'>
+            <label className='moldboard_image' >MoldBoard Images:</label>
+            <div className='image1'>
+              <label className='image1'>Image1:</label>
+              <input className='image1' type='file' accept='.jpg, .jpeg , .png' onChange={I1U}/>
+            </div>
+            <div className='image1'>
+              <label className='image2'>Image2:</label>
+              <input className='image2' type='file' accept='.jpg, .jpeg , .png' onChange={I2U}/>
+            </div>
+            <div className='image1'>
+              <label className='image3'>Image3:</label>
+              <input className='image3' type='file' accept='.jpg, .jpeg , .png' onChange={I3U}/>
+            </div>
+            <div className='image1'>
+              <label className='image4'>Image4:</label>
+              <input className='image4' type='file' accept='.jpg, .jpeg , .png' onChange={I4U}/>
+            </div>
           </div>
         </div>
 
