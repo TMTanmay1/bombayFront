@@ -2,6 +2,8 @@
   import '../Styles/Proposal.css'
   import Header from '../Components/Header'
   import Body from '../Components/Body'
+  import EBody from '../Components/EBody'
+  import MBody from '../Components/MBody'
   import { useSelector, useDispatch } from 'react-redux';
   import { updateFormData, updateBr, updateCn,selectService } from '../store/slice/formSlice';
   
@@ -108,6 +110,8 @@
               </div>
 
               {selectedService === 'Content Creation' && <Body />}
+              {selectedService === 'Experimental Marketing' && <EBody/>}
+              {selectedService === 'Metaverse Services' && <MBody/>}
               
             </div>
             
